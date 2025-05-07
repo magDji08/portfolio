@@ -20,13 +20,52 @@
             background-size: 400% 400%;
             animation: gradient-pulse 15s ease infinite;
         }
+        
+        /* Ajout d'animations pour la section À propos */
+        .text-reveal {
+            clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+            animation: text-reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        }
+        
+        @keyframes text-reveal {
+            0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+            100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+        }
+        
+        /* Styles pour l'effet 3D immersif */
+        .scene-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Perspective 3D pour les cartes */
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+        
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+        
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+        
+        .perspective-1000 {
+            perspective: 1000px;
+        }
     </style>
 </head>
 
 <body class="bg-gray-900 text-gray-100 font-['Inter'] overflow-x-hidden">
     
-    <!-- Fond 3D Interactif -->
-    <div id="particles" class="fixed inset-0 -z-10 opacity-20"></div>
+    <!-- Fond 3D Interactif Amélioré -->
+    <div id="scene-container" class="scene-container"></div>
 
     <!-- Navigation Améliorée -->
     <nav class="fixed w-full z-50 backdrop-blur-xl bg-gray-900/90 border-b border-cyan-500/20">
@@ -39,10 +78,27 @@
                     </span>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
+                    <a href="#apropos" class="nav-link hover:text-cyan-400 transition-colors">À Propos</a>
                     <a href="#expertise" class="nav-link hover:text-cyan-400 transition-colors">Expertise</a>
                     <a href="#projets" class="nav-link hover:text-cyan-400 transition-colors">Réalisations</a>
                     <a href="#certifications" class="nav-link hover:text-cyan-400 transition-colors">Certifications</a>
                     <a href="#contact" class="px-6 py-2 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full hover:scale-105">Contact</a>
+                </div>
+                <!-- Menu mobile -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-cyan-400">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Menu mobile dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden p-4 border-t border-cyan-500/20">
+                <div class="flex flex-col space-y-4">
+                    <a href="#apropos" class="hover:text-cyan-400 transition-colors">À Propos</a>
+                    <a href="#expertise" class="hover:text-cyan-400 transition-colors">Expertise</a>
+                    <a href="#projets" class="hover:text-cyan-400 transition-colors">Réalisations</a>
+                    <a href="#certifications" class="hover:text-cyan-400 transition-colors">Certifications</a>
+                    <a href="#contact" class="px-6 py-2 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full hover:scale-105 text-center">Contact</a>
                 </div>
             </div>
         </div>
@@ -62,13 +118,160 @@
                 Innovation Technologique<br>au Service de Votre Succès
             </h1>
             
-            <div class="flex justify-center space-x-6">
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
                 <a href="#contact" class="cta-button bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-blue-600 hover:to-cyan-400 text-white px-8 py-4 rounded-full">
                     🚀 Discutons de votre projet
                 </a>
                 <a href="cv.pdf" download class="cta-button border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 px-8 py-4 rounded-full">
                     📄 Télécharger mon CV
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nouvelle Section À Propos -->
+    <section id="apropos" class="py-32 px-4 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-16 text-center">À Propos de Moi</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Partie gauche avec image et détails -->
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                    <div class="relative bg-gray-800 p-8 rounded-3xl">
+                        <!-- Image avec animation 3D -->
+                        <div class="perspective-1000 mb-8">
+                            <div class="preserve-3d transform hover:rotate-y-10 transition-transform duration-500">
+                                <img src="assets/profile.jpg" 
+                                     class="w-full h-96 object-cover rounded-xl shadow-2xl"
+                                     alt="Mamadou Absa Gueye - Portrait">
+                            </div>
+                        </div>
+                        
+                        <!-- Informations personnelles -->
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 flex items-center justify-center bg-cyan-400/20 rounded-lg">
+                                    <i class="fas fa-user-graduate text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">Formation</h3>
+                                    <p class="text-gray-300">Ingénieur en Informatique</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 flex items-center justify-center bg-cyan-400/20 rounded-lg">
+                                    <i class="fas fa-briefcase text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">Expérience</h3>
+                                    <p class="text-gray-300">+5 ans en Développement</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 flex items-center justify-center bg-cyan-400/20 rounded-lg">
+                                    <i class="fas fa-map-marker-alt text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">Localisation</h3>
+                                    <p class="text-gray-300">Bambey, Sénégal</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 flex items-center justify-center bg-cyan-400/20 rounded-lg">
+                                    <i class="fas fa-language text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">Langues</h3>
+                                    <p class="text-gray-300">Français, Anglais, Wolof</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partie droite avec bio -->
+                <div class="space-y-8">
+                    <h3 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                        Bonjour, je suis Mamadou Absa Gueye
+                    </h3>
+                    
+                    <p class="text-gray-300 leading-relaxed text-lg font-light">
+                        Architecte de solutions digitales passionné par la création d'expériences technologiques innovantes et efficaces. J'associe une solide expertise technique à une vision créative pour développer des solutions sur mesure qui répondent aux défis complexes des entreprises.
+                    </p>
+                    
+                    <p class="text-gray-300 leading-relaxed text-lg font-light">
+                        Mon parcours m'a permis de maîtriser diverses technologies, du développement web et mobile à l'intelligence artificielle, avec toujours le même objectif : transformer vos idées en solutions concrètes et performantes.
+                    </p>
+                    
+                    <div class="pt-4">
+                        <h4 class="text-xl font-bold mb-4">Compétences Clés</h4>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="skill-item">
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></div>
+                                    <span>JavaScript/TypeScript</span>
+                                </div>
+                                <div class="h-1 w-full bg-gray-700 rounded-full mt-2">
+                                    <div class="h-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></div>
+                                    <span>Flutter/Dart</span>
+                                </div>
+                                <div class="h-1 w-full bg-gray-700 rounded-full mt-2">
+                                    <div class="h-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></div>
+                                    <span>Laravel/PHP</span>
+                                </div>
+                                <div class="h-1 w-full bg-gray-700 rounded-full mt-2">
+                                    <div class="h-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></div>
+                                    <span>Python/ML</span>
+                                </div>
+                                <div class="h-1 w-full bg-gray-700 rounded-full mt-2">
+                                    <div class="h-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></div>
+                                    <span>UI/UX Design</span>
+                                </div>
+                                <div class="h-1 w-full bg-gray-700 rounded-full mt-2">
+                                    <div class="h-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></div>
+                                    <span>DevOps/Cloud</span>
+                                </div>
+                                <div class="h-1 w-full bg-gray-700 rounded-full mt-2">
+                                    <div class="h-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full" style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -166,7 +369,6 @@
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="tech-tag bg-cyan-400/10 text-cyan-400">Laravel</span>
                             <span class="tech-tag bg-purple-400/10 text-purple-400">Livewire</span>
-                            <!-- <span class="tech-tag bg-green-400/10 text-green-400">IA Prédictive</span> -->
                         </div>
                         <p class="text-gray-300 mb-8 leading-relaxed">
                             Solution complète de gestion de production avec :
@@ -186,13 +388,13 @@
             <!-- Projet E-learning -->
             <div class="project-card group relative overflow-hidden rounded-3xl mb-20">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="relative order-last">
+                    <div class="relative order-1 lg:order-last">
                         <img src="assets/e-learning.png" 
                              class="w-full h-96 object-cover transform group-hover:scale-105 transition-transform"
                              alt="Plateforme E-learning">
                         <div class="absolute inset-0 bg-gradient-to-l from-cyan-400/20 to-blue-600/20"></div>
                     </div>
-                    <div class="p-8">
+                    <div class="p-8 order-2 lg:order-first">
                         <h3 class="text-3xl font-bold mb-6">Plateforme Éducative</h3>
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="tech-tag bg-blue-400/10 text-blue-400">Flutter</span>
@@ -301,7 +503,6 @@
                                 <div class="p-3 bg-cyan-400/20 rounded-lg">
                                     <i class="fas fa-envelope text-cyan-400"></i>
                                 </div>
-                                <!-- <span class="text-gray-300 ">magdji08@gmail.com</span>   -->
                                 <span class="text-gray-300">mamadouabsaguye@gmail.com</span>
                             </div>
                         </div>
@@ -330,44 +531,189 @@
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900/80 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-400">&copy; 2025 Mamadou Absa Gueye. Tous droits réservés.</p>
+        </div>
+    </footer>
+
     <script>
-        // Configuration Three.js
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('particle-canvas').appendChild(renderer.domElement);
+        // Configuration Three.js améliorée pour animation 3D immersive
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuration Three.js
+            const container = document.getElementById('scene-container');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+            
+            // Système de Particules avancé
+            const particleCount = 6000;
+            const geometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(particleCount * 3);
+            const colors = new Float32Array(particleCount * 3);
+            
+            const color1 = new THREE.Color(0x3b82f6); // Bleu
+            const color2 = new THREE.Color(0x22d3ee); // Cyan
+            
+            for (let i = 0; i < particleCount; i++) {
+                // Position
+                const x = (Math.random() - 0.5) * 10;
+                const y = (Math.random() - 0.5) * 10;
+                const z = (Math.random() - 0.5) * 10;
+                
+                positions[i * 3] = x;
+                positions[i * 3 + 1] = y;
+                positions[i * 3 + 2] = z;
+                
+                // Couleur (dégradé entre bleu et cyan)
+                const mixedColor = color1.clone().lerp(color2, Math.random());
+                colors[i * 3] = mixedColor.r;
+                colors[i * 3 + 1] = mixedColor.g;
+                colors[i * 3 + 2] = mixedColor.b;
+            }
+            
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            
+            const particleMaterial = new THREE.PointsMaterial({
+                size: 0.02,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            const particleSystem = new THREE.Points(geometry, particleMaterial);
+            scene.add(particleSystem);
+            
+            camera.position.z = 5;
+            
+            // Variables pour l'interactivité
+            let mouseX = 0;
+            let mouseY = 0;
+            let targetX = 0;
+            let targetY = 0;
+            
+            // Détection de la souris
+            document.addEventListener('mousemove', function(event) {
+                mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+                mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+            });
+            
+            // Animation avec interaction
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                // Mouvement fluide vers la position de la souris
+                targetX += (mouseX * 0.05 - targetX) * 0.01;
+                targetY += (mouseY * 0.05 - targetY) * 0.01;
+                
+                // Rotation du système de particules
+                particleSystem.rotation.x += 0.0005;
+                particleSystem.rotation.y += 0.0005;
+                
+                // Rotation en fonction de la souris
+                particleSystem.rotation.x += targetY * 0.0005;
+                particleSystem.rotation.y += targetX * 0.0005;
+                
+                // Pulsation des particules
+                const time = Date.now() * 0.0005;
+                particleSystem.scale.x = 1 + Math.sin(time) * 0.03;
+                particleSystem.scale.y = 1 + Math.sin(time) * 0.03;
+                particleSystem.scale.z = 1 + Math.sin(time) * 0.03;
+                
+                renderer.render(scene, camera);
+            }
+            
+            // Redimensionnement
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+            
+            window.addEventListener('resize', onWindowResize);
+            
+            // Démarrer l'animation
+            animate();
+            
+            // Menu mobile toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
 
-        // Système de Particules
-        const geometry = new THREE.BufferGeometry();
-        const posArray = new Float32Array(5000 * 3);
-        for(let i = 0; i < 5000 * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 5;
-        }
-        geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        const material = new THREE.PointsMaterial({ size: 0.005, color: 0x3B82F6 });
-        const particleSystem = new THREE.Points(geometry, material);
-        scene.add(particleSystem);
-        camera.position.z = 3;
-
-        // Animation
-        function animate() {
-            requestAnimationFrame(animate);
-            particleSystem.rotation.x += 0.001;
-            particleSystem.rotation.y += 0.002;
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Animations GSAP
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.utils.toArray('.project-card, .certification-card').forEach(el => {
-            gsap.from(el, {
-                scrollTrigger: { trigger: el },
-                opacity: 0,
+        // Animations GSAP pour les sections
+        document.addEventListener('DOMContentLoaded', function() {
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Animation de la section À propos
+            gsap.from('#apropos h2', {
+                scrollTrigger: { trigger: '#apropos' },
                 y: 50,
-                duration: 1,
-                ease: "power4.out"
+                opacity: 0,
+                duration: 1
+            });
+            
+            gsap.from('#apropos .skill-item', {
+                scrollTrigger: { trigger: '#apropos .skill-item' },
+                x: -50,
+                opacity: 0,
+                stagger: 0.1,
+                duration: 0.5
+            });
+            
+            // Animation des projets
+            gsap.utils.toArray('.project-card').forEach(el => {
+                gsap.from(el, {
+                    scrollTrigger: { 
+                        trigger: el,
+                        start: 'top bottom-=100px'
+                    },
+                    opacity: 0,
+                    y: 50,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            });
+            
+            // Animation des certifications
+            gsap.utils.toArray('.certification-card').forEach(el => {
+                gsap.from(el, {
+                    scrollTrigger: { 
+                        trigger: el,
+                        start: 'top bottom-=100px'
+                    },
+                    opacity: 0,
+                    scale: 0.8,
+                    duration: 1,
+                    ease: "back.out(1.7)"
+                });
+            });
+            
+            // Animation de l'expertise
+            gsap.utils.toArray('.holographic-card').forEach((el, i) => {
+                gsap.from(el, {
+                    scrollTrigger: { 
+                        trigger: el,
+                        start: 'top bottom-=100px'
+                    },
+                    opacity: 0,
+                    y: 30,
+                    rotation: i % 2 === 0 ? 5 : -5,
+                    duration: 0.8,
+                    delay: i * 0.15,
+                    ease: "power2.out"
+                });
             });
         });
     </script>
@@ -390,11 +736,46 @@
             background: linear-gradient(45deg, #3b82f630, #8b5cf630);
             backdrop-filter: blur(10px);
         }
+        
+        /* Styles pour l'effet 3D des cartes */
+        .front, .back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Animation pour les compétences */
+        .skill-item:hover .h-1:last-child {
+            filter: brightness(1.3);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+            transition: all 0.3s ease;
+        }
 
         @keyframes gradient-pulse {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
+        }
+        
+        /* Effet de flottement pour les éléments interactifs */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Animation pour les éléments au survol */
+        .project-card:hover {
+            box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.25);
+            transform: translateY(-5px);
+            transition: all 0.5s ease;
+        }
+        
+        /* Effet holographique pour les cartes */
+        .holographic-card:hover {
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+            background: linear-gradient(45deg, #3b82f640, #8b5cf640);
         }
     </style>
 </body>
