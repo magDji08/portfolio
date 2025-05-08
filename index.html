@@ -3,780 +3,884 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mamadou Absa Gueye | Architecte Solutions Digitales</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Portfolio Professionnel</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#64748b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
     <style>
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Poppins', sans-serif;
         }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .holographic-effect {
-            background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #10b981, #3b82f6);
-            background-size: 400% 400%;
-            animation: gradient-pulse 15s ease infinite;
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1);
         }
-        
-        /* Ajout d'animations pour la section À propos */
-        .text-reveal {
-            clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-            animation: text-reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        .project-card .overlay {
+            opacity: 0;
+            transition: all 0.3s ease;
         }
-        
-        @keyframes text-reveal {
-            0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
-            100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+        .project-card:hover .overlay {
+            opacity: 1;
         }
-        
-        /* Styles pour l'effet 3D immersif */
-        .scene-container {
-            position: fixed;
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #3b82f6;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .custom-checkbox {
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        .checkmark {
+            position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 4px;
         }
-        
-        /* Perspective 3D pour les cartes */
-        .preserve-3d {
-            transform-style: preserve-3d;
+        .custom-checkbox:hover input ~ .checkmark {
+            border-color: #3b82f6;
         }
-        
-        .backface-hidden {
-            backface-visibility: hidden;
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
         }
-        
-        .rotate-y-180 {
-            transform: rotateY(180deg);
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
         }
-        
-        .perspective-1000 {
-            perspective: 1000px;
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .custom-checkbox .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        .custom-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e2e8f0;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #3b82f6;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
         }
     </style>
 </head>
-
-<body class="bg-gray-900 text-gray-100 font-['Inter'] overflow-x-hidden">
-    
-    <!-- Fond 3D Interactif Amélioré -->
-    <div id="scene-container" class="scene-container"></div>
-
-    <!-- Navigation Améliorée -->
-    <nav class="fixed w-full z-50 backdrop-blur-xl bg-gray-900/90 border-b border-cyan-500/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center space-x-3">
-                    <div class="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
-                    <span class="text-xl font-bold bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 text-transparent">
-                        MAGDEV
-                    </span>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#apropos" class="nav-link hover:text-cyan-400 transition-colors">À Propos</a>
-                    <a href="#expertise" class="nav-link hover:text-cyan-400 transition-colors">Expertise</a>
-                    <a href="#projets" class="nav-link hover:text-cyan-400 transition-colors">Réalisations</a>
-                    <a href="#certifications" class="nav-link hover:text-cyan-400 transition-colors">Certifications</a>
-                    <a href="#contact" class="px-6 py-2 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full hover:scale-105">Contact</a>
-                </div>
-                <!-- Menu mobile -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-cyan-400">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-            <!-- Menu mobile dropdown -->
-            <div id="mobile-menu" class="hidden md:hidden p-4 border-t border-cyan-500/20">
-                <div class="flex flex-col space-y-4">
-                    <a href="#apropos" class="hover:text-cyan-400 transition-colors">À Propos</a>
-                    <a href="#expertise" class="hover:text-cyan-400 transition-colors">Expertise</a>
-                    <a href="#projets" class="hover:text-cyan-400 transition-colors">Réalisations</a>
-                    <a href="#certifications" class="hover:text-cyan-400 transition-colors">Certifications</a>
-                    <a href="#contact" class="px-6 py-2 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full hover:scale-105 text-center">Contact</a>
-                </div>
-            </div>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-['Pacifico'] text-primary">MAG Dev</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#accueil" class="text-gray-800 hover:text-primary font-medium transition-colors">Accueil</a>
+                <a href="#competences" class="text-gray-800 hover:text-primary font-medium transition-colors">Compétences</a>
+                <a href="#projets" class="text-gray-800 hover:text-primary font-medium transition-colors">Projets</a>
+                <a href="#a-propos" class="text-gray-800 hover:text-primary font-medium transition-colors">À propos</a>
+                <a href="#contact" class="text-gray-800 hover:text-primary font-medium transition-colors">Contact</a>
+            </nav>
+            <button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-800">
+                <i class="ri-menu-line ri-lg"></i>
+            </button>
         </div>
-    </nav>
+    </header>
 
-    <!-- Section Hero -->
-    <section class="min-h-screen flex items-center justify-center px-4 pt-20">
-        <div class="max-w-7xl mx-auto text-center">
-            <div class="relative inline-block mb-12 animate-float">
-                <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-600 blur-3xl opacity-30"></div>
-                <img src="assets/profile.jpg" 
-                     class="w-64 h-64 rounded-full object-cover border-4 border-gray-800 shadow-2xl"
-                     alt="Mamadou Absa Gueye">
-            </div>
-            
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 text-transparent">
-                Innovation Technologique<br>au Service de Votre Succès
-            </h1>
-            
-            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
-                <a href="#contact" class="cta-button bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-blue-600 hover:to-cyan-400 text-white px-8 py-4 rounded-full">
-                    🚀 Discutons de votre projet
-                </a>
-                <a href="cv.pdf" download class="cta-button border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 px-8 py-4 rounded-full">
-                    📄 Télécharger mon CV
-                </a>
+    <!-- Hero Section -->
+    <section id="accueil" class="pt-24 relative overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=elegant%20gradient%20background%20with%20soft%20blue%20and%20purple%20tones%2C%20professional%20portfolio%20background%2C%20minimalist%20design%2C%20clean%20and%20modern%20look%2C%20high-end%20professional%20atmosphere%2C%20subtle%20texture%2C%20perfect%20for%20web%20design%2C%20digital%20creative%20portfolio&width=1920&height=1080&seq=1&orientation=landscape'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-gradient-to-r from-white/90 to-white/40"></div>
+        <div class="container mx-auto px-6 py-24 relative">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Mamadou Absa Gueye</h1>
+                <h2 class="text-2xl md:text-3xl font-medium text-primary mb-6">Développeur Web Créatif</h2>
+                <p class="text-lg text-gray-700 mb-8">Je conçois et développe des expériences numériques élégantes qui combinent esthétique et fonctionnalité pour créer des solutions web innovantes.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projets" class="px-6 py-3 bg-primary text-white font-medium !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Voir mes projets</a>
+                    <a href="#contact" class="px-6 py-3 border border-primary text-primary font-medium !rounded-button hover:bg-primary/5 transition-colors whitespace-nowrap">Me contacter</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Nouvelle Section À Propos -->
-    <section id="apropos" class="py-32 px-4 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold mb-16 text-center">À Propos de Moi</h2>
-            
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Partie gauche avec image et détails -->
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                    <div class="relative bg-gray-800 p-8 rounded-3xl">
-                        <!-- Image avec animation 3D -->
-                        <div class="perspective-1000 mb-8">
-                            <div class="preserve-3d transform hover:rotate-y-10 transition-transform duration-500">
-                                <img src="assets/profile.jpg" 
-                                     class="w-full h-96 object-cover rounded-xl shadow-2xl"
-                                     alt="Mamadou Absa Gueye - Portrait">
+    <!-- Skills Section -->
+    <section id="competences" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Mes Compétences</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Une combinaison de compétences techniques et créatives qui me permettent de concevoir des solutions web complètes.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Technical Skills -->
+                <div class="bg-white p-8 rounded-lg shadow-sm skill-card transition-all duration-300">
+                    <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="ri-code-s-slash-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Développement Frontend</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">HTML/CSS</span>
+                                <span class="text-sm font-medium text-gray-700">95%</span>
                             </div>
+                            <input type="range" min="0" max="100" value="95" class="w-full" disabled>
                         </div>
                         
-                        <!-- Informations personnelles -->
-                        <div class="space-y-4">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-10 h-10 flex items-center justify-center bg-cyan-400/20 rounded-lg">
-                                    <i class="fas fa-user-graduate text-cyan-400"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold">Formation</h3>
-                                    <p class="text-gray-300">Ingénieur en Informatique</p>
-                                </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">Flutter & GetX</span>
+                                <span class="text-sm font-medium text-gray-700">90%</span>
                             </div>
-                            
-                            <div class="flex items-center space-x-4">
-                                <div class="w-10 h-10 flex items-center justify-center bg-cyan-400/20 rounded-lg">
-                                    <i class="fas fa-briefcase text-cyan-400"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold">Expérience</h3>
-                                    <p class="text-gray-300">+5 ans en Développement</p>
-                                </div>
+                            <input type="range" min="0" max="100" value="90" class="w-full" disabled>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">React</span>
+                                <span class="text-sm font-medium text-gray-700">85%</span>
                             </div>
-                            
-                            <div class="flex items-center space-x-4">
-                                <div class="w-10 h-10 flex items-center justify-center bg-cyan-400/20 rounded-lg">
-                                    <i class="fas fa-map-marker-alt text-cyan-400"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold">Localisation</h3>
-                                    <p class="text-gray-300">Bambey, Sénégal</p>
-                                </div>
+                            <input type="range" min="0" max="100" value="85" class="w-full" disabled>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">Angular</span>
+                                <span class="text-sm font-medium text-gray-700">90%</span>
                             </div>
-                            
-                            <div class="flex items-center space-x-4">
-                                <div class="w-10 h-10 flex items-center justify-center bg-cyan-400/20 rounded-lg">
-                                    <i class="fas fa-language text-cyan-400"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold">Langues</h3>
-                                    <p class="text-gray-300">Français, Anglais, Wolof</p>
-                                </div>
-                            </div>
+                            <input type="range" min="0" max="100" value="90" class="w-full" disabled>
                         </div>
                     </div>
+                </div>
+
+                <!-- Backend Skills -->
+                <div class="bg-white p-8 rounded-lg shadow-sm skill-card transition-all duration-300">
+                    <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="ri-server-line ri-xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Développement Backend</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">Laravel</span>
+                                <span class="text-sm font-medium text-gray-700">97%</span>
+                            </div>
+                            <input type="range" min="0" max="100" value="97" class="w-full" disabled>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">Spring Boot</span>
+                                <span class="text-sm font-medium text-gray-700">80%</span>
+                            </div>
+                            <input type="range" min="0" max="100" value="80" class="w-full" disabled>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">PHP</span>
+                                <span class="text-sm font-medium text-gray-700">80%</span>
+                            </div>
+                            <input type="range" min="0" max="100" value="80" class="w-full" disabled>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">Django</span>
+                                <span class="text-sm font-medium text-gray-700">85%</span>
+                            </div>
+                            <input type="range" min="0" max="100" value="85" class="w-full" disabled>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">Node.js</span>
+                                <span class="text-sm font-medium text-gray-700">85%</span>
+                            </div>
+                            <input type="range" min="0" max="100" value="85" class="w-full" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design Skills -->
+                <div class="bg-white p-8 rounded-lg shadow-sm skill-card transition-all duration-300">
+                    <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="ri-palette-line ri-xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Autres & Design & Créativité</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">Git & GitHub</span>
+                                <span class="text-sm font-medium text-gray-700">90%</span>
+                            </div>
+                            <input type="range" min="0" max="100" value="90" class="w-full" disabled>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">Docker</span>
+                                <span class="text-sm font-medium text-gray-700">80%</span>
+                            </div>
+                            <input type="range" min="0" max="100" value="80" class="w-full" disabled>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">UI/UX Design</span>
+                                <span class="text-sm font-medium text-gray-700">90%</span>
+                            </div>
+                            <input type="range" min="0" max="100" value="90" class="w-full" disabled>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">Figma</span>
+                                <span class="text-sm font-medium text-gray-700">85%</span>
+                            </div>
+                            <input type="range" min="0" max="100" value="85" class="w-full" disabled>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">Photoshop</span>
+                                <span class="text-sm font-medium text-gray-700">80%</span>
+                            </div>
+                            <input type="range" min="0" max="100" value="80" class="w-full" disabled>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">Illustrator</span>
+                                <span class="text-sm font-medium text-gray-700">75%</span>
+                            </div>
+                            <input type="range" min="0" max="100" value="75" class="w-full" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="bg-white p-8 rounded-lg shadow-sm skill-card transition-all duration-300">
+                    <div class="w-14 h-14 bg-yellow-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="ri-team-line ri-xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Soft Skills</h3>
+                    
+                    <div class="space-y-3">
+                        <label class="custom-checkbox flex items-center text-gray-700">
+                            <input type="checkbox" checked disabled>
+                            <span class="checkmark"></span>
+                            <span class="ml-2">Communication efficace</span>
+                        </label>
+                        
+                        <label class="custom-checkbox flex items-center text-gray-700">
+                            <input type="checkbox" checked disabled>
+                            <span class="checkmark"></span>
+                            <span class="ml-2">Gestion de projet</span>
+                        </label>
+                        
+                        <label class="custom-checkbox flex items-center text-gray-700">
+                            <input type="checkbox" checked disabled>
+                            <span class="checkmark"></span>
+                            <span class="ml-2">Résolution de problèmes</span>
+                        </label>
+                        
+                        <label class="custom-checkbox flex items-center text-gray-700">
+                            <input type="checkbox" checked disabled>
+                            <span class="checkmark"></span>
+                            <span class="ml-2">Travail en équipe</span>
+                        </label>
+                        
+                        <label class="custom-checkbox flex items-center text-gray-700">
+                            <input type="checkbox" checked disabled>
+                            <span class="checkmark"></span>
+                            <span class="ml-2">Adaptabilité</span>
+                        </label>
+                    </div>
+                </div>
+                <!-- Tools -->
+                <div class="bg-white p-8 rounded-lg shadow-sm skill-card transition-all duration-300">
+                    <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="ri-tools-line ri-xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Outils & Technologies</h3>
+                    
+                    <div class="space-y-3">
+                        <label class="custom-checkbox flex items-center text-gray-700">
+                            <input type="checkbox" checked disabled>
+                            <span class="checkmark"></span>
+                            <span class="ml-2">Git & GitHub</span>
+                        </label>
+                        
+                        <label class="custom-checkbox flex items-center text-gray-700">
+                            <input type="checkbox" checked disabled>
+                            <span class="checkmark"></span>
+                            <span class="ml-2">Docker</span>
+                        </label>
+                        
+                        <label class="custom-checkbox flex items-center text-gray-700">
+                            <input type="checkbox" checked disabled>
+                            <span class="checkmark"></span>
+                            <span class="ml-2">VS Code</span>
+                        </label>
+                        
+                        <label class="custom-checkbox flex items-center text-gray-700">
+                            <input type="checkbox" checked disabled>
+                            <span class="checkmark"></span>
+                            <span class="ml-2">Webpack</span>
+                        </label>
+                        
+                        <label class="custom-checkbox flex items-center text-gray-700">
+                            <input type="checkbox" checked disabled>
+                            <span class="checkmark"></span>
+                            <span class="ml-2">JIRA</span>
+                        </label>
+                    </div>
+                </div>
+                <!-- Languages -->
+                <div class="bg-white p-8 rounded-lg shadow-sm skill-card transition-all duration-300">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="ri-translate-2 ri-xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Langues</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">Français</span>
+                                <span class="text-sm font-medium text-gray-700">courant</span>
+                            </div>
+                            <input type="range" min="0" max="100" value="90" class="w-full" disabled>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">Anglais</span>
+                                <span class="text-sm font-medium text-gray-700">Intermediaire</span>
+                            </div>
+                            <input type="range" min="0" max="100" value="70" class="w-full" disabled>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700">Wolof</span>
+                                <span class="text-sm font-medium text-gray-700">natif</span>
+                            </div>
+                            <input type="range" min="0" max="100" value="98" class="w-full" disabled>
+                        </div>
+                        
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projets" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Mes Projets</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Découvrez une sélection de mes réalisations récentes qui démontrent mes compétences et ma créativité.</p>
+            </div>
+
+            <div class="mb-8 flex justify-center">
+                <div class="inline-flex p-1 bg-gray-100 rounded-full">
+                    <button class="px-4 py-2 rounded-full bg-primary text-white font-medium whitespace-nowrap">Tous</button>
+                    <button class="px-4 py-2 rounded-full text-gray-700 font-medium hover:bg-gray-200 whitespace-nowrap">Web Design</button>
+                    <button class="px-4 py-2 rounded-full text-gray-700 font-medium hover:bg-gray-200 whitespace-nowrap">Applications</button>
+                    <button class="px-4 py-2 rounded-full text-gray-700 font-medium hover:bg-gray-200 whitespace-nowrap">E-commerce</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card rounded-lg overflow-hidden shadow-sm group">
+                    <div class="relative h-64">
+                        <img src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20website%20interface%20with%20elegant%20design%2C%20product%20showcase%2C%20clean%20layout%2C%20professional%20web%20design%2C%20high-end%20shopping%20experience%2C%20fashion%20products%20display%2C%20responsive%20design%20mockup&width=600&height=400&seq=2&orientation=landscape" alt="Projet E-commerce Luxe" class="w-full h-full object-cover">
+                        <div class="overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Boutique E-commerce Luxe</h3>
+                            <p class="text-sm text-center mb-4">Plateforme e-commerce pour une marque de mode haut de gamme avec système de paiement sécurisé et expérience utilisateur optimisée.</p>
+                            <a href="#" class="px-4 py-2 bg-white text-primary font-medium !rounded-button hover:bg-white/90 transition-colors whitespace-nowrap">Voir le projet</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card rounded-lg overflow-hidden shadow-sm group">
+                    <div class="relative h-64">
+                        <img src="https://readdy.ai/api/search-image?query=mobile%20app%20dashboard%20interface%20with%20analytics%2C%20user-friendly%20design%2C%20data%20visualization%2C%20modern%20UI%20elements%2C%20clean%20design%2C%20professional%20mobile%20application%20interface%2C%20financial%20tracking%20app&width=600&height=400&seq=3&orientation=landscape" alt="Application Mobile Finance" class="w-full h-full object-cover">
+                        <div class="overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">FinTrack App</h3>
+                            <p class="text-sm text-center mb-4">Application mobile de suivi financier avec tableaux de bord personnalisables et visualisation de données avancée.</p>
+                            <a href="#" class="px-4 py-2 bg-white text-primary font-medium !rounded-button hover:bg-white/90 transition-colors whitespace-nowrap">Voir le projet</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card rounded-lg overflow-hidden shadow-sm group">
+                    <div class="relative h-64">
+                        <img src="https://readdy.ai/api/search-image?query=corporate%20website%20design%20with%20professional%20layout%2C%20business%20services%20showcase%2C%20modern%20web%20design%2C%20elegant%20corporate%20identity%2C%20professional%20services%20website%2C%20clean%20and%20minimal%20design%2C%20business%20portfolio&width=600&height=400&seq=4&orientation=landscape" alt="Site Corporate" class="w-full h-full object-cover">
+                        <div class="overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Refonte Site Corporate</h3>
+                            <p class="text-sm text-center mb-4">Refonte complète du site web d'une entreprise de conseil avec intégration CMS et optimisation SEO.</p>
+                            <a href="#" class="px-4 py-2 bg-white text-primary font-medium !rounded-button hover:bg-white/90 transition-colors whitespace-nowrap">Voir le projet</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card rounded-lg overflow-hidden shadow-sm group">
+                    <div class="relative h-64">
+                        <img src="https://readdy.ai/api/search-image?query=restaurant%20booking%20app%20interface%20with%20elegant%20design%2C%20food%20ordering%20system%2C%20reservation%20management%2C%20modern%20UI%20design%2C%20culinary%20experience%20platform%2C%20professional%20food%20service%20application&width=600&height=400&seq=5&orientation=landscape" alt="Application Réservation Restaurant" class="w-full h-full object-cover">
+                        <div class="overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">GourmetBook</h3>
+                            <p class="text-sm text-center mb-4">Application de réservation pour restaurants avec système de notation et recommandations personnalisées.</p>
+                            <a href="#" class="px-4 py-2 bg-white text-primary font-medium !rounded-button hover:bg-white/90 transition-colors whitespace-nowrap">Voir le projet</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card rounded-lg overflow-hidden shadow-sm group">
+                    <div class="relative h-64">
+                        <img src="https://readdy.ai/api/search-image?query=online%20learning%20platform%20interface%20with%20course%20catalog%2C%20video%20lessons%2C%20modern%20educational%20website%20design%2C%20professional%20e-learning%20platform%2C%20clean%20and%20organized%20layout%2C%20digital%20classroom%20environment&width=600&height=400&seq=6&orientation=landscape" alt="Plateforme E-learning" class="w-full h-full object-cover">
+                        <div class="overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">EduConnect</h3>
+                            <p class="text-sm text-center mb-4">Plateforme e-learning avec cours interactifs, suivi de progression et certification en ligne.</p>
+                            <a href="#" class="px-4 py-2 bg-white text-primary font-medium !rounded-button hover:bg-white/90 transition-colors whitespace-nowrap">Voir le projet</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card rounded-lg overflow-hidden shadow-sm group">
+                    <div class="relative h-64">
+                        <img src="https://readdy.ai/api/search-image?query=real%20estate%20property%20listing%20website%20with%20elegant%20design%2C%20property%20search%20interface%2C%20modern%20real%20estate%20platform%2C%20professional%20property%20showcase%2C%20clean%20and%20minimal%20design%2C%20high-end%20real%20estate%20website&width=600&height=400&seq=7&orientation=landscape" alt="Plateforme Immobilière" class="w-full h-full object-cover">
+                        <div class="overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">ImmoPrestige</h3>
+                            <p class="text-sm text-center mb-4">Plateforme immobilière avec recherche avancée, visites virtuelles et système de mise en relation.</p>
+                            <a href="#" class="px-4 py-2 bg-white text-primary font-medium !rounded-button hover:bg-white/90 transition-colors whitespace-nowrap">Voir le projet</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#" class="px-6 py-3 border border-primary text-primary font-medium !rounded-button hover:bg-primary/5 transition-colors whitespace-nowrap">Voir tous les projets</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="a-propos" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="assets/profile2.jpg" alt="Thomas Dubois" class="w-full h-auto rounded-lg shadow-md">
                 </div>
                 
-                <!-- Partie droite avec bio -->
-                <div class="space-y-8">
-                    <h3 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-                        Bonjour, je suis Mamadou Absa Gueye
-                    </h3>
-                    
-                    <p class="text-gray-300 leading-relaxed text-lg font-light">
-                        Architecte de solutions digitales passionné par la création d'expériences technologiques innovantes et efficaces. J'associe une solide expertise technique à une vision créative pour développer des solutions sur mesure qui répondent aux défis complexes des entreprises.
+                
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">À propos de moi</h2>
+                    <p class="text-lg text-gray-700 mb-6">
+                      Je suis <strong>Mamadou Absa Gueye</strong>, actuellement en Master Systèmes Informatiques à l’Université Alioune Diop de Bambey. Passionné par la création de solutions numériques, j’allie développement full stack et machine learning pour répondre à des besoins concrets.
                     </p>
-                    
-                    <p class="text-gray-300 leading-relaxed text-lg font-light">
-                        Mon parcours m'a permis de maîtriser diverses technologies, du développement web et mobile à l'intelligence artificielle, avec toujours le même objectif : transformer vos idées en solutions concrètes et performantes.
+                    <p class="text-lg text-gray-700 mb-6">
+                      J’ai conçu des applications mobiles avec Flutter & GetX, des backends robustes en Laravel, Node.js et Spring Boot, et exploré le Machine Learning en Python. Mon objectif : rendre les outils technologiques plus accessibles et performants, notamment dans les domaines de l’éducation et de la santé.
                     </p>
-                    
-                    <div class="pt-4">
-                        <h4 class="text-xl font-bold mb-4">Compétences Clés</h4>
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                            <div class="skill-item">
-                                <div class="flex items-center">
-                                    <div class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></div>
-                                    <span>JavaScript/TypeScript</span>
-                                </div>
-                                <div class="h-1 w-full bg-gray-700 rounded-full mt-2">
-                                    <div class="h-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full" style="width: 95%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="flex items-center">
-                                    <div class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></div>
-                                    <span>Flutter/Dart</span>
-                                </div>
-                                <div class="h-1 w-full bg-gray-700 rounded-full mt-2">
-                                    <div class="h-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="flex items-center">
-                                    <div class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></div>
-                                    <span>Laravel/PHP</span>
-                                </div>
-                                <div class="h-1 w-full bg-gray-700 rounded-full mt-2">
-                                    <div class="h-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="flex items-center">
-                                    <div class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></div>
-                                    <span>Python/ML</span>
-                                </div>
-                                <div class="h-1 w-full bg-gray-700 rounded-full mt-2">
-                                    <div class="h-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="flex items-center">
-                                    <div class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></div>
-                                    <span>UI/UX Design</span>
-                                </div>
-                                <div class="h-1 w-full bg-gray-700 rounded-full mt-2">
-                                    <div class="h-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full" style="width: 75%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="flex items-center">
-                                    <div class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></div>
-                                    <span>DevOps/Cloud</span>
-                                </div>
-                                <div class="h-1 w-full bg-gray-700 rounded-full mt-2">
-                                    <div class="h-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full" style="width: 70%"></div>
-                                </div>
-                            </div>
-                        </div>
+                    <p class="text-lg text-gray-700 mb-8">
+                      J’anime également la chaîne <a class="text-red-500" href="https://www.youtube.com/@MagDji08">Mag Dev <i class="ri-youtube-fill"></i></a> sur YouTube, où je partage tutoriels et retours d’expérience pour aider les étudiants et autodidactes à progresser efficacement.
+                    </p>
+                  
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                      <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Formation</h3>
+                        <ul class="space-y-2">
+                          <li class="flex items-start">
+                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
+                            Master Systèmes Informatiques — UADB
+                          </li>
+                          <li class="flex items-start">
+                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
+                            Auto-formation Flutter & Laravel
+                          </li>
+                          <li class="flex items-start">
+                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
+                            Initiation au Machine Learning (Python)
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Intérêts</h3>
+                        <ul class="space-y-2">
+                          <li class="flex items-start">
+                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
+                            Développement mobile & web
+                          </li>
+                          <li class="flex items-start">
+                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
+                            Partage de connaissances
+                          </li>
+                          <li class="flex items-start">
+                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
+                            Projets à impact social
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Expertise -->
-    <section id="expertise" class="py-32 px-4">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold mb-16 text-center">Expertise Technique</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Carte Expertise - Fullstack -->
-                <div class="holographic-card group relative p-8 rounded-3xl transform hover:rotate-1 transition-all">
-                    <div class="flex items-center mb-6">
-                        <i class="fas fa-layer-group text-4xl text-cyan-400 mr-4"></i>
-                        <h3 class="text-2xl font-bold">Développement Fullstack</h3>
+                  
+                    <div class="flex flex-wrap gap-4">
+                      <a href="cv.pdf" class="px-6 py-3 bg-primary text-white font-medium rounded-button hover:bg-primary/90 transition">
+                        Télécharger CV
+                      </a>
+                      <a href="#contact" class="px-6 py-3 border border-primary text-primary font-medium rounded-button hover:bg-primary/5 transition">
+                        Me contacter
+                      </a>
                     </div>
-                    <ul class="space-y-3 text-gray-300">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-cyan-400 mr-2"></i>
-                            Architecture Microservices
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-cyan-400 mr-2"></i>
-                            API REST Sécurisées
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-cyan-400 mr-2"></i>
-                            Intégration Continue
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Carte Expertise - Mobile -->
-                <div class="holographic-card group relative p-8 rounded-3xl transform hover:-rotate-1 transition-all">
-                    <div class="flex items-center mb-6">
-                        <i class="fas fa-mobile-alt text-4xl text-purple-400 mr-4"></i>
-                        <h3 class="text-2xl font-bold">Applications Mobile</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-300">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-purple-400 mr-2"></i>
-                            Flutter Multiplateforme
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-purple-400 mr-2"></i>
-                            Animations Native
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-purple-400 mr-2"></i>
-                            Intégration d'APIs
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Carte Expertise - IA -->
-                <div class="holographic-card group relative p-8 rounded-3xl transform hover:rotate-1 transition-all">
-                    <div class="flex items-center mb-6">
-                        <i class="fas fa-robot text-4xl text-green-400 mr-4"></i>
-                        <h3 class="text-2xl font-bold">Intelligence Artificielle</h3>
-                    </div>
-                    <ul class="space-y-3 text-gray-300">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-2"></i>
-                            Analyse Prédictive
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-2"></i>
-                            Chatbots Intelligents
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-2"></i>
-                            Vision par Ordinateur
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Projets -->
-    <section id="projets" class="py-32 px-4 bg-gray-800/50">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold mb-16 text-center">Réalisations Marquantes</h2>
+                  </div>
+                  
             
-            <!-- Projet Boulangerie -->
-            <div class="project-card group relative overflow-hidden rounded-3xl mb-20">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="relative">
-                        <img src="assets/boula.png" 
-                             class="w-full h-96 object-cover transform group-hover:scale-105 transition-transform"
-                             alt="Gestion Boulangerie">
-                        <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-600/20"></div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-3xl font-bold mb-6">Optimisation de Production</h3>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="tech-tag bg-cyan-400/10 text-cyan-400">Laravel</span>
-                            <span class="tech-tag bg-purple-400/10 text-purple-400">Livewire</span>
-                        </div>
-                        <p class="text-gray-300 mb-8 leading-relaxed">
-                            Solution complète de gestion de production avec :
-                            <ul class="list-disc pl-6 space-y-2">
-                                <li>Suivi des stocks en temps réel</li>
-                                <li>Analyse prédictive des ventes</li>
-                                <li>Gestion automatisée des commandes</li>
-                            </ul>
-                        </p>
-                        <a href="#" class="text-cyan-400 hover:text-cyan-300 flex items-center">
-                            Voir l'étude de cas ➔
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Projet E-learning -->
-            <div class="project-card group relative overflow-hidden rounded-3xl mb-20">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="relative order-1 lg:order-last">
-                        <img src="assets/e-learning.png" 
-                             class="w-full h-96 object-cover transform group-hover:scale-105 transition-transform"
-                             alt="Plateforme E-learning">
-                        <div class="absolute inset-0 bg-gradient-to-l from-cyan-400/20 to-blue-600/20"></div>
-                    </div>
-                    <div class="p-8 order-2 lg:order-first">
-                        <h3 class="text-3xl font-bold mb-6">Plateforme Éducative</h3>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="tech-tag bg-blue-400/10 text-blue-400">Flutter</span>
-                            <span class="tech-tag bg-red-400/10 text-red-400">Firebase</span>
-                        </div>
-                        <p class="text-gray-300 mb-8 leading-relaxed">
-                            Application mobile d'apprentissage avec :
-                            <ul class="list-disc pl-6 space-y-2">
-                                <li>Cours interactifs</li>
-                                <li>Système de quiz évolué</li>
-                                <li>Suivi de progression</li>
-                            </ul>
-                        </p>
-                        <a href="#" class="text-cyan-400 hover:text-cyan-300 flex items-center">
-                            Voir la démo ➔
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Projet Météo -->
-            <div class="project-card group relative overflow-hidden rounded-3xl">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="relative">
-                        <img src="assets/meteo.png" 
-                             class="w-full h-96 object-cover transform group-hover:scale-105 transition-transform"
-                             alt="Application Météo">
-                        <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-600/20"></div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-3xl font-bold mb-6">Application Météo Intelligente</h3>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="tech-tag bg-yellow-400/10 text-yellow-400">Flutter</span>
-                            <span class="tech-tag bg-blue-400/10 text-blue-400">OpenWeather API</span>
-                        </div>
-                        <p class="text-gray-300 mb-8 leading-relaxed">
-                            Fonctionnalités clés :
-                            <ul class="list-disc pl-6 space-y-2">
-                                <li>Prévisions en temps réel</li>
-                                <li>Alertes personnalisées</li>
-                                <li>Interface adaptable</li>
-                            </ul>
-                        </p>
-                        <a href="#" class="text-cyan-400 hover:text-cyan-300 flex items-center">
-                            Tester l'application ➔
-                        </a>
-                    </div>
-                </div>
+            
             </div>
         </div>
     </section>
 
-    <!-- Section Certifications -->
-    <section id="certifications" class="py-32 px-4">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold mb-16 text-center">Certifications d'Excellence</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="certification-card transform perspective-1000 hover:rotate-y-180 transition-transform duration-1000">
-                    <div class="relative preserve-3d w-full h-full">
-                        <div class="front absolute w-full h-full bg-gray-800 p-8 rounded-3xl backface-hidden flex flex-col items-center">
-                            <i class="fas fa-certificate text-6xl text-cyan-400 mb-6"></i>
-                            <h3 class="text-2xl font-bold mb-2"> Flutter</h3>
-                            <p class="text-gray-400">Certification avancée en développement mobile</p>
-                        </div>
-                        <div class="back absolute w-full h-full bg-gray-800 p-8 rounded-3xl rotate-y-180 backface-hidden flex items-center justify-center">
-                            <a href="CertificatDaccomplissement_Lessentiel de Flutter.pdf" class="cta-button bg-cyan-400 text-gray-900 px-8 py-3 rounded-full">
-                                Télécharger PDF
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="certification-card transform perspective-1000 hover:rotate-y-180 transition-transform duration-1000">
-                    <div class="relative preserve-3d w-full h-full">
-                        <div class="front absolute w-full h-full bg-gray-800 p-8 rounded-3xl backface-hidden flex flex-col items-center">
-                            <i class="fab fa-google text-6xl text-green-400 mb-6"></i>
-                            <h3 class="text-2xl font-bold mb-2">Machine Learning</h3>
-                            <p class="text-gray-400">Python : Le nettoyage des données</p>
-                        </div>
-                        <div class="back absolute w-full h-full bg-gray-800 p-8 rounded-3xl rotate-y-180 backface-hidden flex items-center justify-center">
-                            <a href="CertificatDaccomplissement_Python  Le nettoyage des donnees.pdf" class="cta-button bg-green-400 text-gray-900 px-8 py-3 rounded-full">
-                                Télécharger PDF
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Contact Section -->
+   <!-- Contact -->
+<section id="contact" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Me Contacter</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Vous avez un projet ou une question ? Écrivez-moi et je vous répondrai rapidement.
+        </p>
+      </div>
+  
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Formulaire de contact -->
+        <!-- <div class="bg-white p-8 rounded-lg shadow">
+          <h3 class="text-xl font-semibold text-gray-900 mb-6">Envoyez-moi un message</h3>
+          <form class="space-y-6">
+            <input type="text" id="name" name="name" placeholder="Votre nom" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+            <input type="email" id="email" name="email" placeholder="Votre email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+            <textarea id="message" name="message" rows="5" placeholder="Votre message" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
+            <button type="submit" class="w-full px-6 py-3 bg-primary text-white font-medium rounded-button hover:bg-primary/90 transition">
+              Envoyer
+            </button>
+          </form>
         </div>
-    </section>
+   -->
 
-    <!-- Section Contact Futuriste -->
-    <section id="contact" class="py-32 px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="contact-hologram bg-gray-800 rounded-3xl p-12 shadow-2xl">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div class="space-y-6">
-                        <h2 class="text-4xl font-bold">Collaborons Ensemble</h2>
-                        <div class="space-y-4">
-                            <div class="flex items-center space-x-4">
-                                <div class="p-3 bg-cyan-400/20 rounded-lg">
-                                    <i class="fas fa-map-marker-alt text-cyan-400"></i>
-                                </div>
-                                <span class="text-gray-300">Bambey, Sénégal</span>
-                            </div>
-                            <div class="flex items-center space-x-4">
-                                <div class="p-3 bg-cyan-400/20 rounded-lg">
-                                    <i class="fas fa-envelope text-cyan-400"></i>
-                                </div>
-                                <span class="text-gray-300">mamadouabsaguye@gmail.com</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-6">
-                            <a href="https://www.linkedin.com/in/mamadou-absa-gueye/" class="social-icon">
-                                <i class="fab fa-linkedin-in text-2xl"></i>
-                            </a>
-                            <a href="https://github.com/magDji08" class="social-icon">
-                                <i class="fab fa-github text-2xl"></i>
-                            </a>
-                            <a href="https://www.youtube.com/@MagDji08" class="social-icon">
-                                <i class="fab fa-youtube text-2xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <form class="space-y-6">
-                        <input type="text" placeholder="Nom" class="w-full bg-gray-700 px-6 py-4 rounded-xl border border-gray-600 focus:border-cyan-400">
-                        <input type="email" placeholder="Email" class="w-full bg-gray-700 px-6 py-4 rounded-xl border border-gray-600 focus:border-cyan-400">
-                        <textarea rows="5" placeholder="Décrivez votre vision..." class="w-full bg-gray-700 px-6 py-4 rounded-xl border border-gray-600 focus:border-cyan-400"></textarea>
-                        <button class="w-full bg-gradient-to-r from-cyan-400 to-blue-600 text-white py-4 rounded-xl hover:shadow-2xl">
-                            Envoyer le message ➔
-                        </button>
-                    </form>
+   <div class="bg-white p-8 rounded-lg shadow">
+    <h3 class="text-xl font-semibold text-gray-900 mb-6">Envoyez-moi un message</h3>
+    <form 
+      action="mailto:magdji08@gmail.com" 
+      method="post" 
+      enctype="text/plain" 
+      class="space-y-6"
+    >
+      <input 
+        type="text" 
+        id="name" 
+        name="name" 
+        placeholder="Votre nom" 
+        class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+        required
+      >
+      <input 
+        type="email" 
+        id="email" 
+        name="email" 
+        placeholder="Votre email" 
+        class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+        required
+      >
+      <textarea 
+        id="message" 
+        name="message" 
+        rows="5" 
+        placeholder="Votre message" 
+        class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+        required
+      ></textarea>
+      <button 
+        type="submit" 
+        class="w-full px-6 py-3 bg-primary text-white font-medium rounded-button hover:bg-primary/90 transition"
+      >
+        Envoyer
+      </button>
+    </form>
+  </div>
+  
+
+
+
+
+
+
+
+
+        <!-- Informations de contact -->
+        <div class="space-y-8">
+          <div class="bg-white p-8 rounded-lg shadow">
+            <h3 class="text-xl font-semibold text-gray-900 mb-6">Informations</h3>
+            <ul class="space-y-4 text-gray-700">
+              <li class="flex items-start">
+                <i class="ri-map-pin-line text-primary text-2xl mr-4"></i>
+                <div>
+                  <h4 class="font-medium">Localisation</h4>
+                  <p>Dakar & Bambey, Sénégal</p>
                 </div>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-mail-line text-primary text-2xl mr-4"></i>
+                <div>
+                  <h4 class="font-medium">Email</h4>
+                  <p>mamadou.absa@gmail.com</p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-phone-line text-primary text-2xl mr-4"></i>
+                <div>
+                  <h4 class="font-medium">Téléphone</h4>
+                  <p>+221 77 365 99 29</p>
+                </div>
+              </li>
+            </ul>
+  
+            <div class="mt-6">
+              <h4 class="text-lg font-medium text-gray-900 mb-4">Suivez-moi</h4>
+              <div class="flex space-x-4">
+                <a href="https://www.linkedin.com/in/mamadou-absa-gueye/" class="text-gray-700 hover:text-primary text-2xl">
+                  <i class="ri-linkedin-fill"></i>
+                </a>
+                <a href="https://github.com/magDji08" class="text-gray-700 hover:text-primary text-2xl">
+                  <i class="ri-github-fill"></i>
+                </a>
+                <a href="https://www.youtube.com/@MagDji08" class="text-gray-700 hover:text-primary text-2xl">
+                  <i class="ri-youtube-fill"></i>
+                </a>
+              </div>
             </div>
+          </div>
+  
+          <div class="bg-white p-8 rounded-lg shadow">
+            <h3 class="text-xl font-semibold text-gray-900 mb-6">Disponibilité</h3>
+            <p class="text-gray-700 mb-4">Disponible pour des missions freelance et des collaborations.</p>
+            <h4 class="font-medium">Horaires de travail</h4>
+            <p class="text-gray-700 mb-2">Lundi - Vendredi : 9h00 - 18h00 (GMT+0)</p>
+            <h4 class="font-medium">Temps de réponse</h4>
+            <p class="text-gray-700">Généralement sous 24 heures</p>
+          </div>
         </div>
-    </section>
-
+      </div>
+    </div>
+  </section>
+   
     <!-- Footer -->
-    <footer class="py-12 bg-gray-900/80 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-gray-400">&copy; 2025 Mamadou Absa Gueye. Tous droits réservés.</p>
+<footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- À propos -->
+        <div>
+          <a href="#" class="text-2xl font-['Pacifico'] text-white mb-4 inline-block">MAG Dev</a>
+          <p class="text-gray-400 mb-6">
+            Mamadou Absa Gueye, développeur full stack passionné. J’aide les étudiants et les entreprises à construire des solutions numériques modernes.
+          </p>
+          <div class="flex space-x-4">
+            <a href="https://www.linkedin.com/in/mamadou-absa-gueye" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-primary hover:text-white transition-colors">
+              <i class="ri-linkedin-fill"></i>
+            </a>
+            <a href="https://github.com/mamadouabsagueye" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-primary hover:text-white transition-colors">
+              <i class="ri-github-fill"></i>
+            </a>
+            <a href="https://www.youtube.com/@magdev" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-primary hover:text-white transition-colors">
+              <i class="ri-youtube-fill"></i>
+            </a>
+            <a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-primary hover:text-white transition-colors">
+              <i class="ri-behance-fill"></i>
+            </a>
+          </div>
         </div>
-    </footer>
-
+  
+        <!-- Liens rapides -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Liens rapides</h3>
+          <ul class="space-y-2">
+            <li><a href="#accueil" class="text-gray-400 hover:text-white transition-colors">Accueil</a></li>
+            <li><a href="#competences" class="text-gray-400 hover:text-white transition-colors">Compétences</a></li>
+            <li><a href="#projets" class="text-gray-400 hover:text-white transition-colors">Projets</a></li>
+            <li><a href="#a-propos" class="text-gray-400 hover:text-white transition-colors">À propos</a></li>
+            <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+  
+        <!-- Services -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Développement Web</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Développement Mobile</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Consulting Tech</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Formation & Coaching</a></li>
+          </ul>
+        </div>
+  
+        <!-- Newsletter -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+          <p class="text-gray-400 mb-4">Abonne-toi pour recevoir mes projets, tutoriels et conseils techniques.</p>
+          <form class="flex">
+            <input type="email" placeholder="Votre email" class="px-4 py-2 bg-gray-800 text-gray-200 rounded-l focus:outline-none focus:ring-2 focus:ring-primary/20 border-none w-full">
+            <button type="submit" class="px-4 py-2 bg-primary text-white !rounded-r-button hover:bg-primary/90 transition-colors whitespace-nowrap">S'abonner</button>
+          </form>
+        </div>
+      </div>
+  
+      <!-- Bas de page -->
+      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Mamadou Absa Gueye. Tous droits réservés.</p>
+        <div class="flex items-center space-x-4">
+          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Politique de confidentialité</a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Mentions légales</a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
     <script>
-        // Configuration Three.js améliorée pour animation 3D immersive
         document.addEventListener('DOMContentLoaded', function() {
-            // Configuration Three.js
-            const container = document.getElementById('scene-container');
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(window.devicePixelRatio);
-            container.appendChild(renderer.domElement);
-            
-            // Système de Particules avancé
-            const particleCount = 6000;
-            const geometry = new THREE.BufferGeometry();
-            const positions = new Float32Array(particleCount * 3);
-            const colors = new Float32Array(particleCount * 3);
-            
-            const color1 = new THREE.Color(0x3b82f6); // Bleu
-            const color2 = new THREE.Color(0x22d3ee); // Cyan
-            
-            for (let i = 0; i < particleCount; i++) {
-                // Position
-                const x = (Math.random() - 0.5) * 10;
-                const y = (Math.random() - 0.5) * 10;
-                const z = (Math.random() - 0.5) * 10;
-                
-                positions[i * 3] = x;
-                positions[i * 3 + 1] = y;
-                positions[i * 3 + 2] = z;
-                
-                // Couleur (dégradé entre bleu et cyan)
-                const mixedColor = color1.clone().lerp(color2, Math.random());
-                colors[i * 3] = mixedColor.r;
-                colors[i * 3 + 1] = mixedColor.g;
-                colors[i * 3 + 2] = mixedColor.b;
-            }
-            
-            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-            
-            const particleMaterial = new THREE.PointsMaterial({
-                size: 0.02,
-                vertexColors: true,
-                transparent: true,
-                opacity: 0.8
-            });
-            
-            const particleSystem = new THREE.Points(geometry, particleMaterial);
-            scene.add(particleSystem);
-            
-            camera.position.z = 5;
-            
-            // Variables pour l'interactivité
-            let mouseX = 0;
-            let mouseY = 0;
-            let targetX = 0;
-            let targetY = 0;
-            
-            // Détection de la souris
-            document.addEventListener('mousemove', function(event) {
-                mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-                mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-            });
-            
-            // Animation avec interaction
-            function animate() {
-                requestAnimationFrame(animate);
-                
-                // Mouvement fluide vers la position de la souris
-                targetX += (mouseX * 0.05 - targetX) * 0.01;
-                targetY += (mouseY * 0.05 - targetY) * 0.01;
-                
-                // Rotation du système de particules
-                particleSystem.rotation.x += 0.0005;
-                particleSystem.rotation.y += 0.0005;
-                
-                // Rotation en fonction de la souris
-                particleSystem.rotation.x += targetY * 0.0005;
-                particleSystem.rotation.y += targetX * 0.0005;
-                
-                // Pulsation des particules
-                const time = Date.now() * 0.0005;
-                particleSystem.scale.x = 1 + Math.sin(time) * 0.03;
-                particleSystem.scale.y = 1 + Math.sin(time) * 0.03;
-                particleSystem.scale.z = 1 + Math.sin(time) * 0.03;
-                
-                renderer.render(scene, camera);
-            }
-            
-            // Redimensionnement
-            function onWindowResize() {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            }
-            
-            window.addEventListener('resize', onWindowResize);
-            
-            // Démarrer l'animation
-            animate();
-            
-            // Menu mobile toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('hidden');
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
-            }
+            });
         });
 
-        // Animations GSAP pour les sections
         document.addEventListener('DOMContentLoaded', function() {
-            gsap.registerPlugin(ScrollTrigger);
+            // Add active class to current section in navigation
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
             
-            // Animation de la section À propos
-            gsap.from('#apropos h2', {
-                scrollTrigger: { trigger: '#apropos' },
-                y: 50,
-                opacity: 0,
-                duration: 1
-            });
-            
-            gsap.from('#apropos .skill-item', {
-                scrollTrigger: { trigger: '#apropos .skill-item' },
-                x: -50,
-                opacity: 0,
-                stagger: 0.1,
-                duration: 0.5
-            });
-            
-            // Animation des projets
-            gsap.utils.toArray('.project-card').forEach(el => {
-                gsap.from(el, {
-                    scrollTrigger: { 
-                        trigger: el,
-                        start: 'top bottom-=100px'
-                    },
-                    opacity: 0,
-                    y: 50,
-                    duration: 1,
-                    ease: "power3.out"
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-primary');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('text-primary');
+                    }
                 });
             });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Custom checkbox functionality
+            const checkboxes = document.querySelectorAll('.custom-checkbox input[type="checkbox"]');
             
-            // Animation des certifications
-            gsap.utils.toArray('.certification-card').forEach(el => {
-                gsap.from(el, {
-                    scrollTrigger: { 
-                        trigger: el,
-                        start: 'top bottom-=100px'
-                    },
-                    opacity: 0,
-                    scale: 0.8,
-                    duration: 1,
-                    ease: "back.out(1.7)"
-                });
+            checkboxes.forEach(checkbox => {
+                if (!checkbox.hasAttribute('disabled')) {
+                    checkbox.addEventListener('change', function() {
+                        // Custom checkbox logic if needed
+                    });
+                }
             });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Custom switch functionality
+            const switches = document.querySelectorAll('.custom-switch input[type="checkbox"]');
             
-            // Animation de l'expertise
-            gsap.utils.toArray('.holographic-card').forEach((el, i) => {
-                gsap.from(el, {
-                    scrollTrigger: { 
-                        trigger: el,
-                        start: 'top bottom-=100px'
-                    },
-                    opacity: 0,
-                    y: 30,
-                    rotation: i % 2 === 0 ? 5 : -5,
-                    duration: 0.8,
-                    delay: i * 0.15,
-                    ease: "power2.out"
+            switches.forEach(switchEl => {
+                switchEl.addEventListener('change', function() {
+                    // Custom switch logic if needed
                 });
             });
         });
     </script>
-
-    <style>
-        .cta-button {
-            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.25);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .tech-tag {
-            @apply px-4 py-2 rounded-full text-sm font-medium;
-        }
-
-        .social-icon {
-            @apply text-gray-400 hover:text-cyan-400 transition-colors;
-        }
-
-        .holographic-card {
-            background: linear-gradient(45deg, #3b82f630, #8b5cf630);
-            backdrop-filter: blur(10px);
-        }
-        
-        /* Styles pour l'effet 3D des cartes */
-        .front, .back {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            backface-visibility: hidden;
-            transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        /* Animation pour les compétences */
-        .skill-item:hover .h-1:last-child {
-            filter: brightness(1.3);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
-            transition: all 0.3s ease;
-        }
-
-        @keyframes gradient-pulse {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* Effet de flottement pour les éléments interactifs */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        /* Animation pour les éléments au survol */
-        .project-card:hover {
-            box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.25);
-            transform: translateY(-5px);
-            transition: all 0.5s ease;
-        }
-        
-        /* Effet holographique pour les cartes */
-        .holographic-card:hover {
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
-            background: linear-gradient(45deg, #3b82f640, #8b5cf640);
-        }
-    </style>
 </body>
 </html>
