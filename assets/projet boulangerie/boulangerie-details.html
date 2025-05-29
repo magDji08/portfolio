@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détails - Gestion de Boulangerie</title>
+  
+  <!-- Tailwind via Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom styles -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    :root {
+      --color-primary: #8B5A2B; /* Couleur pain */
+      --color-secondary: #D4A76A; /* Couleur pâte */
+      --color-accent: #5F8670; /* Vert boulangerie */
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .bread-gradient {
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+    }
+    
+    .feature-card {
+      transition: all 0.3s ease;
+      background: linear-gradient(to bottom right, #FFF9F2, #FFF);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(139, 90, 43, 0.2);
+    }
+    
+    .dashboard-mockup {
+      box-shadow: 0 25px 50px -12px rgba(139, 90, 43, 0.25);
+      border-radius: 1.5rem;
+      border: 8px solid white;
+    }
+    
+    .tech-badge {
+      transition: all 0.3s ease;
+    }
+    
+    .tech-badge:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body class="bg-[#FFF9F2] text-gray-800 antialiased">
+
+  <!-- Hero Header -->
+  <header class="bread-gradient text-white py-16 shadow-lg">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="md:w-1/2">
+          <span class="inline-block bg-white/20 px-3 py-1 rounded-full text-sm font-medium mb-4">Projet Professionnel</span>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">Gestion de<br>Boulangerie Artisanale</h1>
+          <p class="text-lg opacity-90">Optimisation numérique de la production artisanale au quotidien</p>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+          <img src="boulangerie.png" alt="Interface Boulangerie" class="dashboard-mockup w-full max-w-md">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-16 max-w-6xl">
+    
+    <!-- Project Overview -->
+    <section class="mb-20">
+      <div class="flex flex-col lg:flex-row gap-12 items-center">
+        <div class="lg:w-1/2">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900 relative">
+            <span class="absolute -left-6 top-3 w-4 h-4 bg-primary rounded-full"></span>
+            Aperçu du projet
+          </h2>
+          <p class="text-lg leading-relaxed mb-6 text-gray-700">
+            Solution digitale complète conçue spécialement pour les boulangeries artisanales, permettant une gestion optimisée de la production journalière avec une interface intuitive et des fonctionnalités métier spécifiques.
+          </p>
+          <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <h3 class="font-semibold text-lg mb-3">Problématique résolue</h3>
+            <p class="text-gray-600">
+              Remplace les méthodes manuelles (carnets, calculatrices) par une solution centralisée qui réduit les erreurs, gagne du temps et fournit des insights précieux sur l'activité.
+            </p>
+          </div>
+        </div>
+        <div class="lg:w-1/2">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white p-4 rounded-lg shadow-xs border border-gray-100">
+              <div class="text-3xl font-bold text-primary mb-2">+85%</div>
+              <div class="text-sm text-gray-500">Efficacité accrue</div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-xs border border-gray-100">
+              <div class="text-3xl font-bold text-primary mb-2">-60%</div>
+              <div class="text-sm text-gray-500">Erreurs réduites</div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-xs border border-gray-100 col-span-2">
+              <div class="flex items-center space-x-3">
+                <div class="flex-shrink-0 bg-primary/10 p-2 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-medium">10h économisées</div>
+                  <div class="text-sm text-gray-500">Par semaine en moyenne</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="mb-20">
+      <h2 class="text-3xl font-bold mb-12 text-center text-gray-900">
+        Fonctionnalités clés
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="feature-card p-6 rounded-xl border border-gray-100">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-xl mb-2">Saisie journalière</h3>
+          <p class="text-gray-600">
+            Enregistrement précis des productions matin et soir avec interface optimisée pour usage quotidien.
+          </p>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="feature-card p-6 rounded-xl border border-gray-100">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-xl mb-2">Calculs automatiques</h3>
+          <p class="text-gray-600">
+            Algorithmes métier pour calculer automatiquement les montants, ingrédients utilisés et marges.
+          </p>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="feature-card p-6 rounded-xl border border-gray-100">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-xl mb-2">Gestion clients</h3>
+          <p class="text-gray-600">
+            Suivi des abonnements, versements et reliquats avec historiques complets et alertes.
+          </p>
+        </div>
+        
+        <!-- Feature 4 -->
+        <div class="feature-card p-6 rounded-xl border border-gray-100">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-xl mb-2">Dashboard analytique</h3>
+          <p class="text-gray-600">
+            Visualisation des tendances de production, ventes et consommation d'ingrédients.
+          </p>
+        </div>
+        
+        <!-- Feature 5 -->
+        <div class="feature-card p-6 rounded-xl border border-gray-100">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-xl mb-2">Gestion des stocks</h3>
+          <p class="text-gray-600">
+            Suivi en temps réel des ingrédients avec alertes de réapprovisionnement.
+          </p>
+        </div>
+        
+        <!-- Feature 6 -->
+        <div class="feature-card p-6 rounded-xl border border-gray-100">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-xl mb-2">Filtres temporels</h3>
+          <p class="text-gray-600">
+            Analyse par périodes (jour/semaine/mois) pour un suivi précis de l'activité.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="mb-20">
+      <div class="bg-white rounded-2xl shadow-sm p-8 md:p-12 border border-gray-100">
+        <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">
+          Stack Technologique
+        </h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 justify-items-center">
+          <div class="tech-badge flex flex-col items-center">
+            <div class="w-16 h-16 bg-[#FF2D20]/10 rounded-full flex items-center justify-center mb-2">
+              <img src="https://laravel.com/img/logomark.min.svg" alt="Laravel" class="h-8">
+            </div>
+            <span class="text-sm font-medium">Laravel</span>
+          </div>
+          
+          <div class="tech-badge flex flex-col items-center">
+            <div class="w-16 h-16 bg-[#1E40AF]/10 rounded-full flex items-center justify-center mb-2">
+              <img src="https://blade-ui-kit.com/images/blade-logo.svg" alt="Blade" class="h-8">
+            </div>
+            <span class="text-sm font-medium">Blade</span>
+          </div>
+          
+          <div class="tech-badge flex flex-col items-center">
+            <div class="w-16 h-16 bg-[#4479A1]/10 rounded-full flex items-center justify-center mb-2">
+              <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="MySQL" class="h-8">
+            </div>
+            <span class="text-sm font-medium">MySQL</span>
+          </div>
+          
+          <div class="tech-badge flex flex-col items-center">
+            <div class="w-16 h-16 bg-[#06B6D4]/10 rounded-full flex items-center justify-center mb-2">
+              <img src="https://tailwindcss.com/_next/static/media/tailwindcss-mark.79614a5f61617ba49a0891494521226b.svg" alt="Tailwind CSS" class="h-8">
+            </div>
+            <span class="text-sm font-medium">Tailwind CSS</span>
+          </div>
+          
+          <div class="tech-badge flex flex-col items-center">
+            <div class="w-16 h-16 bg-[#FF6384]/10 rounded-full flex items-center justify-center mb-2">
+              <img src="https://www.chartjs.org/img/chartjs-logo.svg" alt="Chart.js" class="h-8">
+            </div>
+            <span class="text-sm font-medium">Chart.js</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="mb-16">
+      <div class="bg-primary/5 rounded-2xl p-8 md:p-12 border border-primary/10">
+        <h2 class="text-3xl font-bold mb-6 text-center text-gray-900">
+          Impact et Résultats
+        </h2>
+        
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="md:w-1/2">
+            <h3 class="text-xl font-semibold mb-4 text-primary">Pour les boulangers</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Gain de temps significatif dans la gestion quotidienne</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Réduction drastique des erreurs de calcul</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Meilleure visibilité sur la rentabilité des produits</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="md:w-1/2">
+            <h3 class="text-xl font-semibold mb-4 text-primary">Pour l'entreprise</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Digitalisation d'un processus 100% manuel</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Solution sur mesure adaptée aux besoins spécifiques</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Base pour d'autres solutions métiers dans l'artisanat</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="text-center">
+      <a href="index.html#projets" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary/90 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+        </svg>
+        Retour aux projets
+      </a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white py-8 border-t border-gray-100">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 Mamadou Absa Gueye. Tous droits réservés.</p>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+            <span class="sr-only">GitHub</span>
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+            <span class="sr-only">LinkedIn</span>
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

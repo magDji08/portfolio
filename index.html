@@ -138,9 +138,9 @@
             <a href="#" class="text-2xl font-['Pacifico'] text-primary">MAG Dev</a>
             <nav class="hidden md:flex space-x-8">
                 <a href="#accueil" class="text-gray-800 hover:text-primary font-medium transition-colors">Accueil</a>
+                <a href="#a-propos" class="text-gray-800 hover:text-primary font-medium transition-colors">À propos</a>
                 <a href="#competences" class="text-gray-800 hover:text-primary font-medium transition-colors">Compétences</a>
                 <a href="#projets" class="text-gray-800 hover:text-primary font-medium transition-colors">Projets</a>
-                <a href="#a-propos" class="text-gray-800 hover:text-primary font-medium transition-colors">À propos</a>
                 <a href="#contact" class="text-gray-800 hover:text-primary font-medium transition-colors">Contact</a>
             </nav>
             <button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-800">
@@ -150,20 +150,105 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="accueil" class="pt-24 relative overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=elegant%20gradient%20background%20with%20soft%20blue%20and%20purple%20tones%2C%20professional%20portfolio%20background%2C%20minimalist%20design%2C%20clean%20and%20modern%20look%2C%20high-end%20professional%20atmosphere%2C%20subtle%20texture%2C%20perfect%20for%20web%20design%2C%20digital%20creative%20portfolio&width=1920&height=1080&seq=1&orientation=landscape'); background-size: cover; background-position: center;">
-        <div class="absolute inset-0 bg-gradient-to-r from-white/90 to-white/40"></div>
-        <div class="container mx-auto px-6 py-24 relative">
-            <div class="max-w-2xl">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Mamadou Absa Gueye</h1>
-                <h2 class="text-2xl md:text-3xl font-medium text-primary mb-6">Développeur Web Créatif</h2>
-                <p class="text-lg text-gray-700 mb-8">Je conçois et développe des expériences numériques élégantes qui combinent esthétique et fonctionnalité pour créer des solutions web innovantes.</p>
+    <!-- <section id="accueil" class="pt-24 relative overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=elegant%20gradient%20background%20with%20soft%20blue%20and%20purple%20tones%2C%20professional%20portfolio%20background%2C%20minimalist%20design%2C%20clean%20and%20modern%20look%2C%20high-end%20professional%20atmosphere%2C%20subtle%20texture%2C%20perfect%20for%20web%20design%2C%20digital%20creative%20portfolio&width=1920&height=1080&seq=1&orientation=landscape'); background-size: cover; background-position: center;"> -->
+    <section id="accueil" class="pt-24 relative overflow-hidden" style="background-image: url('assets/banier1.png'); background-size: cover; background-position: center;">
+        <div class=" inset-0 bg-gradient-to-r from-white/90 to-white/40"></div>
+        <div class="container mx-auto px-6 py-24 relative z-10">
+            <div class="max-w-3xl">
+                <p class="uppercase tracking-widest text-sm text-secondary font-semibold mb-4">Conception & Développement Web</p>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-black leading-tight mb-6">
+                    Mamadou Absa Gueye<br>
+                    <span class="text-primary animate-pulse">Créateur d’expériences numériques</span>
+                </h1>
+                <p class="text-lg md:text-xl text-black-700 mb-10 text-sm text-secondary">
+                    Je transforme des idées en interfaces intuitives et performantes. Mon objectif : créer des solutions web efficaces, esthétiques et centrées sur l’utilisateur.
+                </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#projets" class="px-6 py-3 bg-primary text-white font-medium !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Voir mes projets</a>
-                    <a href="#contact" class="px-6 py-3 border border-primary text-primary font-medium !rounded-button hover:bg-primary/5 transition-colors whitespace-nowrap">Me contacter</a>
+                    <a href="#projets" class="px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary/90 transition-colors shadow-lg">
+                    Découvrir mon travail
+                    </a>
+                    <a href="#contact" class="px-6 py-3 border border-primary text-primary font-semibold rounded-full hover:bg-primary/5 transition-colors">
+                    Discutons ensemble
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+
+     <!-- About Section -->
+    <section id="a-propos" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="assets/profile2.jpg" alt="Thomas Dubois" class="w-full h-auto rounded-lg shadow-md">
+                </div>
+                
+                
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">À propos de moi</h2>
+                    <p class="text-lg text-gray-700 mb-6">
+                      Je suis <strong>Mamadou Absa Gueye</strong>, actuellement en Master Systèmes Informatiques à l’Université Alioune Diop de Bambey. Passionné par la création de solutions numériques, j’allie développement full stack et machine learning pour répondre à des besoins concrets.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-6">
+                      J’ai conçu des applications mobiles avec Flutter & GetX, des backends robustes en Laravel, Node.js et Spring Boot, et exploré le Machine Learning en Python. Mon objectif : rendre les outils technologiques plus accessibles et performants, notamment dans les domaines de l’éducation et de la santé.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-8">
+                      J’anime également la chaîne <a class="text-red-500" href="https://www.youtube.com/@MagDji08">Mag Dev <i class="ri-youtube-fill"></i></a> sur YouTube, où je partage tutoriels et retours d’expérience pour aider les étudiants et autodidactes à progresser efficacement.
+                    </p>
+                  
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                      <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Formation</h3>
+                        <ul class="space-y-2">
+                          <li class="flex items-start">
+                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
+                            Master Systèmes Informatiques — UADB
+                          </li>
+                          <li class="flex items-start">
+                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
+                            Auto-formation Flutter & Laravel
+                          </li>
+                          <li class="flex items-start">
+                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
+                            Initiation au Machine Learning (Python)
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Intérêts</h3>
+                        <ul class="space-y-2">
+                          <li class="flex items-start">
+                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
+                            Développement mobile & web
+                          </li>
+                          <li class="flex items-start">
+                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
+                            Partage de connaissances
+                          </li>
+                          <li class="flex items-start">
+                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
+                            Projets à impact social
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  
+                    <div class="flex flex-wrap gap-4">
+                      <a href="cv.pdf" class="px-6 py-3 bg-primary text-white font-medium rounded-button hover:bg-primary/90 transition">
+                        Télécharger CV
+                      </a>
+                      <a href="#contact" class="px-6 py-3 border border-primary text-primary font-medium rounded-button hover:bg-primary/5 transition">
+                        Me contacter
+                      </a>
+                    </div>
+                  </div>
+                  
+            
+            
+            </div>
+        </div>
+    </section>
+
 
     <!-- Skills Section -->
     <section id="competences" class="py-20 bg-gray-50">
@@ -289,17 +374,10 @@
                             <input type="range" min="0" max="100" value="80" class="w-full" disabled>
                         </div>
 
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-gray-700">UI/UX Design</span>
-                                <span class="text-sm font-medium text-gray-700">90%</span>
-                            </div>
-                            <input type="range" min="0" max="100" value="90" class="w-full" disabled>
-                        </div>
                         
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-gray-700">Figma</span>
+                                <span class="text-sm font-medium text-gray-700">Figma UI/UX Design</span>
                                 <span class="text-sm font-medium text-gray-700">85%</span>
                             </div>
                             <input type="range" min="0" max="100" value="85" class="w-full" disabled>
@@ -307,7 +385,7 @@
                         
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-gray-700">Photoshop</span>
+                                <span class="text-sm font-medium text-gray-700">Illustrator</span>
                                 <span class="text-sm font-medium text-gray-700">80%</span>
                             </div>
                             <input type="range" min="0" max="100" value="80" class="w-full" disabled>
@@ -315,7 +393,7 @@
                         
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-gray-700">Illustrator</span>
+                                <span class="text-sm font-medium text-gray-700"> Photoshop</span>
                                 <span class="text-sm font-medium text-gray-700">75%</span>
                             </div>
                             <input type="range" min="0" max="100" value="75" class="w-full" disabled>
@@ -388,7 +466,7 @@
                             <span class="ml-2">VS Code</span>
                         </label>
                         
-                        <label class="custom-checkbox flex items-center text-gray-700">
+                        <!-- <label class="custom-checkbox flex items-center text-gray-700">
                             <input type="checkbox" checked disabled>
                             <span class="checkmark"></span>
                             <span class="ml-2">Webpack</span>
@@ -398,7 +476,7 @@
                             <input type="checkbox" checked disabled>
                             <span class="checkmark"></span>
                             <span class="ml-2">JIRA</span>
-                        </label>
+                        </label> -->
                     </div>
                 </div>
                 <!-- Languages -->
@@ -457,29 +535,43 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
+                <!-- Project 1: Gestion BOULANGERIE -->
                 <div class="project-card rounded-lg overflow-hidden shadow-sm group">
                     <div class="relative h-64">
-                        <img src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20website%20interface%20with%20elegant%20design%2C%20product%20showcase%2C%20clean%20layout%2C%20professional%20web%20design%2C%20high-end%20shopping%20experience%2C%20fashion%20products%20display%2C%20responsive%20design%20mockup&width=600&height=400&seq=2&orientation=landscape" alt="Projet E-commerce Luxe" class="w-full h-full object-cover">
-                        <div class="overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center p-6 text-white">
-                            <h3 class="text-xl font-semibold mb-2">Boutique E-commerce Luxe</h3>
-                            <p class="text-sm text-center mb-4">Plateforme e-commerce pour une marque de mode haut de gamme avec système de paiement sécurisé et expérience utilisateur optimisée.</p>
-                            <a href="#" class="px-4 py-2 bg-white text-primary font-medium !rounded-button hover:bg-white/90 transition-colors whitespace-nowrap">Voir le projet</a>
+                        <img src="assets/projet boulangerie/boulangerie.png" alt="Application Gestion Boulangerie" class="w-full h-full object-cover">
+                        <div class="overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-semibold mb-2 text-center">Application de Gestion de Production - Boulangerie</h3>
+                        <p class="text-sm text-center mb-4">
+                            Application web permettant de gérer les productions journalières, les ingrédients, les quantités, les montants et les statistiques de performance d'une boulangerie artisanale.
+                        </p>
+                        <a href="assets/projet boulangerie/boulangerie-details.html" class="px-4 py-2 bg-white text-primary font-medium !rounded-button hover:bg-white/90 transition-colors whitespace-nowrap">
+                            Voir les détails
+                        </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
+
+                <!-- Project 2: Gestion CERTIFICAT DOMICILE -->
                 <div class="project-card rounded-lg overflow-hidden shadow-sm group">
                     <div class="relative h-64">
-                        <img src="https://readdy.ai/api/search-image?query=mobile%20app%20dashboard%20interface%20with%20analytics%2C%20user-friendly%20design%2C%20data%20visualization%2C%20modern%20UI%20elements%2C%20clean%20design%2C%20professional%20mobile%20application%20interface%2C%20financial%20tracking%20app&width=600&height=400&seq=3&orientation=landscape" alt="Application Mobile Finance" class="w-full h-full object-cover">
-                        <div class="overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center p-6 text-white">
-                            <h3 class="text-xl font-semibold mb-2">FinTrack App</h3>
-                            <p class="text-sm text-center mb-4">Application mobile de suivi financier avec tableaux de bord personnalisables et visualisation de données avancée.</p>
-                            <a href="#" class="px-4 py-2 bg-white text-primary font-medium !rounded-button hover:bg-white/90 transition-colors whitespace-nowrap">Voir le projet</a>
+                        <img 
+                        src="assets/projet_gestion certificats/Screenshot_1748040089-removebg-preview.png" 
+                        alt="Application gestion certificat de domicile" 
+                        class="w-full h-full object-cover"
+                        >
+                        <div class="overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-semibold mb-2 text-center">Gestion des Certificats de Domicile</h3>
+                        <p class="text-sm text-center mb-4">
+                            Application mobile intuitive pour la génération, le suivi et la validation rapide des certificats de domicile par les autorités locales.
+                        </p>
+                        <a href="assets/projet_gestion certificats/certificat-details.html" class="px-4 py-2 bg-white text-primary font-medium !rounded-button hover:bg-white/90 transition-colors whitespace-nowrap">
+                            Voir le projet
+                        </a>
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Project 3 -->
                 <div class="project-card rounded-lg overflow-hidden shadow-sm group">
@@ -536,80 +628,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="a-propos" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <img src="assets/profile2.jpg" alt="Thomas Dubois" class="w-full h-auto rounded-lg shadow-md">
-                </div>
-                
-                
-                <div>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">À propos de moi</h2>
-                    <p class="text-lg text-gray-700 mb-6">
-                      Je suis <strong>Mamadou Absa Gueye</strong>, actuellement en Master Systèmes Informatiques à l’Université Alioune Diop de Bambey. Passionné par la création de solutions numériques, j’allie développement full stack et machine learning pour répondre à des besoins concrets.
-                    </p>
-                    <p class="text-lg text-gray-700 mb-6">
-                      J’ai conçu des applications mobiles avec Flutter & GetX, des backends robustes en Laravel, Node.js et Spring Boot, et exploré le Machine Learning en Python. Mon objectif : rendre les outils technologiques plus accessibles et performants, notamment dans les domaines de l’éducation et de la santé.
-                    </p>
-                    <p class="text-lg text-gray-700 mb-8">
-                      J’anime également la chaîne <a class="text-red-500" href="https://www.youtube.com/@MagDji08">Mag Dev <i class="ri-youtube-fill"></i></a> sur YouTube, où je partage tutoriels et retours d’expérience pour aider les étudiants et autodidactes à progresser efficacement.
-                    </p>
-                  
-                    <div class="grid grid-cols-2 gap-4 mb-8">
-                      <div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Formation</h3>
-                        <ul class="space-y-2">
-                          <li class="flex items-start">
-                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
-                            Master Systèmes Informatiques — UADB
-                          </li>
-                          <li class="flex items-start">
-                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
-                            Auto-formation Flutter & Laravel
-                          </li>
-                          <li class="flex items-start">
-                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
-                            Initiation au Machine Learning (Python)
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Intérêts</h3>
-                        <ul class="space-y-2">
-                          <li class="flex items-start">
-                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
-                            Développement mobile & web
-                          </li>
-                          <li class="flex items-start">
-                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
-                            Partage de connaissances
-                          </li>
-                          <li class="flex items-start">
-                            <i class="ri-checkbox-circle-line text-primary mr-2 mt-1"></i>
-                            Projets à impact social
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  
-                    <div class="flex flex-wrap gap-4">
-                      <a href="cv.pdf" class="px-6 py-3 bg-primary text-white font-medium rounded-button hover:bg-primary/90 transition">
-                        Télécharger CV
-                      </a>
-                      <a href="#contact" class="px-6 py-3 border border-primary text-primary font-medium rounded-button hover:bg-primary/5 transition">
-                        Me contacter
-                      </a>
-                    </div>
-                  </div>
-                  
-            
-            
-            </div>
-        </div>
-    </section>
-
+   
     <!-- Contact Section -->
    <!-- Contact -->
 <section id="contact" class="py-20 bg-gray-50">
