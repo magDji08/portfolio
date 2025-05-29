@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projet - Système de Pointage Multifonctionnel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .tech-card {
+      transition: all 0.3s ease;
+    }
+    
+    .tech-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-icon {
+      background: linear-gradient(135deg, #6366F1, #8B5CF6);
+    }
+    
+    .system-architecture {
+      background: linear-gradient(to right, #F9FAFB, #F3F4F6);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Hero Section -->
+  <header class="bg-gradient-to-r from-indigo-700 to-indigo-600 text-white py-16 px-6 shadow-lg">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="md:w-2/3">
+          <span class="inline-block bg-white/20 px-3 py-1 rounded-full text-sm font-medium mb-4">Mémoire de fin d'études</span>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">Système de Pointage Intelligent</h1>
+          <p class="text-xl opacity-90 max-w-2xl">Solution intégrée combinant RFID, biométrie et plateforme web pour une gestion optimisée des présences</p>
+        </div>
+        <div class="md:w-1/3 flex justify-center">
+          <div class="relative">
+            <div class="absolute -inset-2 bg-indigo-400/20 rounded-2xl blur"></div>
+            <img src="pointage.jpg" 
+                 alt="Interface et matériel du système de pointage" 
+                 class="relative rounded-xl shadow-xl border-4 border-white w-full max-w-xs">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-6 py-16">
+
+    <!-- Project Context -->
+    <section class="mb-16">
+      <div class="flex flex-col lg:flex-row gap-12 items-center">
+        <div class="lg:w-1/2">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900 relative">
+            <span class="absolute -left-6 top-3 w-4 h-4 bg-indigo-600 rounded-full"></span>
+            Contexte du projet
+          </h2>
+          <p class="text-lg leading-relaxed mb-6 text-gray-700">
+            Développé dans le cadre de mon mémoire de fin d'études, ce système innovant répond aux besoins des établissements cherchant à automatiser et fiabiliser le suivi des présences. Il combine des technologies matérielles et logicielles pour offrir une solution complète et sécurisée.
+          </p>
+          <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+            <h3 class="font-semibold text-lg mb-3 text-indigo-600">Problématique résolue</h3>
+            <p class="text-gray-600">
+              Remplacement des systèmes de pointage manuels sujets aux erreurs par une solution automatisée, fiable grâce à la biométrie, et offrant une gestion centralisée des données.
+            </p>
+          </div>
+        </div>
+        <div class="lg:w-1/2">
+          <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+            <h3 class="text-xl font-semibold mb-4 text-gray-900">Objectifs atteints</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <div class="flex items-center justify-center h-6 w-6 rounded-full bg-indigo-100 text-indigo-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+                <p class="ml-3 text-gray-600">Authentification multi-facteurs (RFID + biométrie)</p>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <div class="flex items-center justify-center h-6 w-6 rounded-full bg-indigo-100 text-indigo-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+                <p class="ml-3 text-gray-600">Transmission des données en temps réel</p>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <div class="flex items-center justify-center h-6 w-6 rounded-full bg-indigo-100 text-indigo-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+                <p class="ml-3 text-gray-600">Interface web de gestion centralisée</p>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <div class="flex items-center justify-center h-6 w-6 rounded-full bg-indigo-100 text-indigo-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+                <p class="ml-3 text-gray-600">Génération automatisée de rapports</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-12 text-center text-gray-900">
+        Fonctionnalités principales
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div class="w-12 h-12 feature-icon rounded-lg flex items-center justify-center mb-4 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-xl mb-2">Authentification sécurisée</h3>
+          <p class="text-gray-600">
+            Double méthode d'identification via carte RFID et empreinte digitale pour une sécurité renforcée.
+          </p>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div class="w-12 h-12 feature-icon rounded-lg flex items-center justify-center mb-4 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-xl mb-2">Transmission des données</h3>
+          <p class="text-gray-600">
+            Communication via port série USB ou Wi-Fi (ESP8266) pour une intégration flexible.
+          </p>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div class="w-12 h-12 feature-icon rounded-lg flex items-center justify-center mb-4 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-xl mb-2">Gestion centralisée</h3>
+          <p class="text-gray-600">
+            Plateforme web pour administrer utilisateurs, consulter les présences et gérer les accès.
+          </p>
+        </div>
+        
+        <!-- Feature 4 -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div class="w-12 h-12 feature-icon rounded-lg flex items-center justify-center mb-4 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-xl mb-2">Statistiques avancées</h3>
+          <p class="text-gray-600">
+            Visualisation des retards, absences et taux de ponctualité pour une meilleure analyse.
+          </p>
+        </div>
+        
+        <!-- Feature 5 -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div class="w-12 h-12 feature-icon rounded-lg flex items-center justify-center mb-4 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-xl mb-2">Export de rapports</h3>
+          <p class="text-gray-600">
+            Génération de documents PDF/Excel pour archivage et traitement externe.
+          </p>
+        </div>
+        
+        <!-- Feature 6 -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div class="w-12 h-12 feature-icon rounded-lg flex items-center justify-center mb-4 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-xl mb-2">Sécurité des données</h3>
+          <p class="text-gray-600">
+            Stockage sécurisé avec chiffrement des données biométriques sensibles.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Architecture -->
+    <section class="mb-16 system-architecture rounded-2xl p-8 md:p-12">
+      <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">
+        Architecture technique
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Hardware -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4 text-indigo-600 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            </svg>
+            Composants matériels
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>Arduino Uno (microcontrôleur)</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>Module RFID RC522</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>Capteur d'empreinte digitale R305</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>Module Wi-Fi ESP8266 (optionnel)</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Software -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4 text-indigo-600 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+            Stack logicielle
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>Django (framework Python back-end)</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>MySQL (gestion via XAMPP)</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>Tailwind CSS (design front-end)</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>JavaScript (interactivité)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technologies -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">
+        Technologies utilisées
+      </h2>
+      
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+        <div class="tech-card bg-white p-4 rounded-lg shadow-xs border border-gray-200 flex flex-col items-center">
+          <div class="w-12 h-12 bg-[#092E20]/10 rounded-full flex items-center justify-center mb-2">
+            <img src="https://www.djangoproject.com/m/img/logos/django-logo-negative.png" alt="Django" class="h-6">
+          </div>
+          <span class="text-sm font-medium">Django</span>
+        </div>
+        
+        <div class="tech-card bg-white p-4 rounded-lg shadow-xs border border-gray-200 flex flex-col items-center">
+          <div class="w-12 h-12 bg-[#00979D]/10 rounded-full flex items-center justify-center mb-2">
+            <img src="https://www.arduino.cc/en/pub/skins/arduinoWide/img/ArduinoAPP.svg" alt="Arduino" class="h-6">
+          </div>
+          <span class="text-sm font-medium">Arduino</span>
+        </div>
+        
+        <div class="tech-card bg-white p-4 rounded-lg shadow-xs border border-gray-200 flex flex-col items-center">
+          <div class="w-12 h-12 bg-[#0277BD]/10 rounded-full flex items-center justify-center mb-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/RFID_icon.svg/1200px-RFID_icon.svg.png" alt="RFID" class="h-6">
+          </div>
+          <span class="text-sm font-medium">RFID</span>
+        </div>
+        
+        <div class="tech-card bg-white p-4 rounded-lg shadow-xs border border-gray-200 flex flex-col items-center">
+          <div class="w-12 h-12 bg-[#4479A1]/10 rounded-full flex items-center justify-center mb-2">
+            <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="MySQL" class="h-6">
+          </div>
+          <span class="text-sm font-medium">MySQL</span>
+        </div>
+        
+        <div class="tech-card bg-white p-4 rounded-lg shadow-xs border border-gray-200 flex flex-col items-center">
+          <div class="w-12 h-12 bg-[#06B6D4]/10 rounded-full flex items-center justify-center mb-2">
+            <img src="https://tailwindcss.com/_next/static/media/tailwindcss-mark.79614a5f61617ba49a0891494521226b.svg" alt="Tailwind CSS" class="h-6">
+          </div>
+          <span class="text-sm font-medium">Tailwind</span>
+        </div>
+        
+        <div class="tech-card bg-white p-4 rounded-lg shadow-xs border border-gray-200 flex flex-col items-center">
+          <div class="w-12 h-12 bg-[#F7DF1E]/10 rounded-full flex items-center justify-center mb-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" class="h-6">
+          </div>
+          <span class="text-sm font-medium">JavaScript</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="mb-16 bg-indigo-50 rounded-2xl p-8 md:p-12">
+      <h2 class="text-3xl font-bold mb-6 text-center text-gray-900">
+        Résultats et impacts
+      </h2>
+      
+      <div class="flex flex-col md:flex-row gap-8">
+        <div class="md:w-1/2">
+          <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+            <h3 class="text-xl font-semibold mb-4 text-indigo-600">Performances</h3>
+            <p class="text-gray-600 mb-4">
+              Le système a été testé avec succès dans un environnement réel, démontrant une fiabilité de 99,2% dans la reconnaissance et l'enregistrement des pointages.
+            </p>
+            <div class="flex items-center space-x-4">
+              <div class="flex-1">
+                <div class="text-2xl font-bold text-indigo-600">99.2%</div>
+                <div class="text-sm text-gray-500">Taux de réussite</div>
+              </div>
+              <div class="flex-1">
+                <div class="text-2xl font-bold text-indigo-600">&lt;1s</div>
+                <div class="text-sm text-gray-500">Temps de réponse</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="md:w-1/2">
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="text-xl font-semibold mb-4 text-indigo-600">Avantages concrets</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Élimination des erreurs de pointage manuel</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Réduction de 75% du temps de gestion</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Transparence accrue grâce à la biométrie</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="text-center">
+      <a href="index.html#projets" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w
