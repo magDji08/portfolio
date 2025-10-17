@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MagDji Bot — Assistant IA local basé sur Ollama et LLaMA 3.2. Un chatbot intelligent fonctionnant 100% hors ligne.">
+    <title>MagDji Bot - Assistant IA Local | MAG Dev</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#64748b'}}}}</script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .gallery-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        .gallery-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .gallery-scroll::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 10px;
+        }
+        .gallery-scroll::-webkit-scrollbar-thumb:hover {
+            background: #764ba2;
+        }
+        .tech-card {
+            transition: all 0.3s ease;
+        }
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header Élégant -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200/50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <span class="text-white font-bold text-lg">M</span>
+                    </div>
+                    <div>
+                        <span class="font-bold text-gray-900 text-lg">MAG Dev</span>
+                        <div class="text-xs text-gray-500">Développeur Full Stack</div>
+                    </div>
+                </div>
+                <a href="../../../index.html#projets" class="group flex items-center space-x-2 px-4 py-2 text-gray-700 hover:text-purple-600 transition-all duration-300 rounded-lg hover:bg-purple-50">
+                    <i class="ri-arrow-left-line transition-transform group-hover:-translate-x-1"></i>
+                    <span>Retour au portfolio</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section Spectaculaire -->
+    <section class="relative hero-gradient text-white py-20 overflow-hidden">
+        <!-- Éléments décoratifs -->
+        <div class="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full -translate-y-36 translate-x-36"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/20 rounded-full -translate-x-48 translate-y-48"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <!-- Badge Featured -->
+                <div class="inline-flex items-center px-4 py-2 glass-effect rounded-full text-sm font-medium mb-8 animate-pulse">
+                    <i class="ri-star-fill mr-2 text-yellow-300"></i>
+                    Projet Featured - Intelligence Artificielle
+                </div>
+                
+                <!-- Titre Principal -->
+                <div class="float-animation mb-6">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4">
+                        <span class="bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+                            MagDji Bot
+                        </span>
+                    </h1>
+                    <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full"></div>
+                </div>
+                
+                <p class="text-2xl md:text-3xl font-semibold mb-6 text-purple-100">
+                    Assistant IA Local 🤖
+                </p>
+                <p class="text-lg md:text-xl text-purple-50 max-w-3xl mx-auto leading-relaxed mb-8">
+                    Une expérience de chatbot IA 100% locale, rapide et gratuite alimentée par Ollama et LLaMA 3.2
+                </p>
+                
+                <!-- Boutons d'action -->
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a href="#demo" class="group px-8 py-4 bg-white text-purple-600 font-semibold rounded-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center">
+                        <i class="ri-play-circle-line mr-2 text-xl group-hover:scale-110 transition-transform"></i>
+                        Voir la Démo
+                    </a>
+                    <a href="https://github.com/magDji08/flutter-chat_bot_with_LLM" target="_blank" class="group px-8 py-4 glass-effect text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300 flex items-center">
+                        <i class="ri-github-fill mr-2 text-xl"></i>
+                        Code Source
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats & Badges -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                        <i class="ri-robot-2-fill text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-1">IA Locale</h3>
+                    <p class="text-sm text-gray-600">LLaMA 3.2</p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                        <i class="ri-smartphone-line text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-1">Mobile</h3>
+                    <p class="text-sm text-gray-600">Flutter</p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                        <i class="ri-shield-check-line text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-1">100% Gratuit</h3>
+                    <p class="text-sm text-gray-600">Pas d'API</p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                        <i class="ri-cloud-off-line text-3xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-1">Hors Ligne</h3>
+                    <p class="text-sm text-gray-600">Ollama</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Démonstration Vidéo -->
+    <section class="py-16 bg-gray-50" id="demo">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                        🎥 Démonstration en Vidéo
+                    </h2>
+                    <p class="text-gray-600 text-lg">
+                        Découvrez MagDji Bot en action avec cette démonstration interactive
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:shadow-3xl transition-all duration-300">
+                    <div class="aspect-video bg-gradient-to-br from-purple-100 to-indigo-100 flex items-center justify-center relative">
+                        <!-- Placeholder élégant pour la vidéo -->
+                        <div class="text-center p-8">
+                            <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                                <i class="ri-play-circle-fill text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Voir la Démonstration Complète</h3>
+                            <a href="https://www.linkedin.com/posts/mamadou-absa-gueye_flutter-ai-chatbot-activity-7380085688744067072-CtF8?utm_source=share&utm_medium=member_desktop&rcm=ACoAADtrG7oBivpP6u0NdJtO5uW7HSLH_X6I5TU" 
+                               target="_blank" 
+                               class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-indigo-700 transition-all transform hover:scale-105 shadow-lg">
+                                <i class="ri-external-link-line mr-3 text-xl"></i>
+                                Voir sur LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-600 rounded-r-xl p-6">
+                    <p class="text-blue-900 flex items-start">
+                        <i class="ri-information-line mr-3 text-xl mt-0.5"></i>
+                        <span>
+                            <strong>Note :</strong> Cette vidéo montre l'interface de MagDji Bot et son interaction en temps réel avec le modèle LLaMA 3.2 via Ollama.
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie d'Images -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                        📱 Captures d'Écran
+                    </h2>
+                    <p class="text-gray-600 text-lg">
+                        Explorez l'interface intuitive de MagDji Bot
+                    </p>
+                </div>
+
+                <div class="gallery-scroll flex gap-8 overflow-x-auto pb-8 snap-x snap-mandatory">
+                    <!-- Image 1 -->
+                    <div class="flex-shrink-0 w-80 md:w-96 snap-center group">
+                        <div class="bg-gradient-to-br from-purple-100 to-indigo-100 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+                            <div class="aspect-[9/16] flex items-center justify-center p-6">
+                                <img 
+                                    src="../magdji_bot/img_mag_dji_bot/MAG_dji_bot 1.png" 
+                                    alt="Interface de chat MagDji Bot" 
+                                    class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-lg"
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                >
+                                <div class="hidden flex-col items-center justify-center text-center p-8">
+                                    <i class="ri-chat-3-line text-6xl text-purple-600 mb-4"></i>
+                                    <p class="text-purple-900 font-semibold text-lg">Interface de Chat</p>
+                                    <p class="text-sm text-purple-700 mt-2">Conversations fluides avec l'IA</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-center text-gray-700 font-semibold mt-4 text-lg">💬 Interface de Conversation</p>
+                    </div>
+
+                    <!-- Image 2 -->
+                    <div class="flex-shrink-0 w-80 md:w-96 snap-center group">
+                        <div class="bg-gradient-to-br from-blue-100 to-cyan-100 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+                            <div class="aspect-[9/16] flex items-center justify-center p-6">
+                                <img 
+                                    src="../magdji_bot/img_mag_dji_bot/MAG_dji_bot 2.png" 
+                                    alt="Configuration Ollama" 
+                                    class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-lg"
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                >
+                                <div class="hidden flex-col items-center justify-center text-center p-8">
+                                    <i class="ri-settings-3-line text-6xl text-blue-600 mb-4"></i>
+                                    <p class="text-blue-900 font-semibold text-lg">Configuration</p>
+                                    <p class="text-sm text-blue-700 mt-2">Paramètres Ollama et tokens</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-center text-gray-700 font-semibold mt-4 text-lg">⚙️ Écran de Configuration</p>
+                    </div>
+
+                    <!-- Image 3 -->
+                    <div class="flex-shrink-0 w-80 md:w-96 snap-center group">
+                        <div class="bg-gradient-to-br from-green-100 to-emerald-100 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+                            <div class="aspect-[9/16] flex items-center justify-center p-6">
+                                <img 
+                                    src="../magdji_bot/img_mag_dji_bot/MAG_dji_bot 3.png" 
+                                    alt="Configuration Ollama" 
+                                    class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-lg"
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                >
+                                <div class="hidden flex-col items-center justify-center text-center p-8">
+                                    <i class="ri-server-line text-6xl text-green-600 mb-4"></i>
+                                    <p class="text-green-900 font-semibold text-lg">Paramètres Serveur</p>
+                                    <p class="text-sm text-green-700 mt-2">Configuration Ollama avancée</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-center text-gray-700 font-semibold mt-4 text-lg">🔧 Paramètres Avancés</p>
+                    </div>
+
+                    <!-- Image 4 -->
+                    <div class="flex-shrink-0 w-80 md:w-96 snap-center group">
+                        <div class="bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+                            <div class="aspect-[9/16] flex items-center justify-center p-6">
+                                <img 
+                                    src="../magdji_bot/img_mag_dji_bot/MAG_dji_bot 4.png" 
+                                    alt="Configuration Ollama" 
+                                    class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-lg"
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                >
+                                <div class="hidden flex-col items-center justify-center text-center p-8">
+                                    <i class="ri-key-2-line text-6xl text-orange-600 mb-4"></i>
+                                    <p class="text-orange-900 font-semibold text-lg">Authentification</p>
+                                    <p class="text-sm text-orange-700 mt-2">Gestion des tokens d'accès</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-center text-gray-700 font-semibold mt-4 text-lg">🔐 Gestion des Accès</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <p class="text-gray-500 flex items-center justify-center">
+                        <i class="ri-arrow-left-right-line mr-2"></i>
+                        Faites défiler horizontalement pour voir toutes les captures d'écran
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Description du Projet -->
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                        🚀 À Propos du Projet
+                    </h2>
+                    <p class="text-gray-600 text-lg">
+                        Découvrez l'histoire et les objectifs derrière MagDji Bot
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Carte Problème -->
+                    <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
+                        <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="ri-alert-line text-2xl text-red-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Le Défi</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Les assistants IA modernes présentent des limitations importantes :
+                        </p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="ri-close-circle-fill text-red-500 mr-3 mt-1"></i>
+                                <span>Coût élevé des API (OpenAI, Anthropic, etc.)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-close-circle-fill text-red-500 mr-3 mt-1"></i>
+                                <span>Nécessité d'une connexion Internet permanente</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-close-circle-fill text-red-500 mr-3 mt-1"></i>
+                                <span>Problèmes de confidentialité des données</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-close-circle-fill text-red-500 mr-3 mt-1"></i>
+                                <span>Limitations d'utilisation et quotas</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Carte Solution -->
+                    <div class="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl shadow-lg p-8 text-white hover:shadow-xl transition-all duration-300">
+                        <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="ri-lightbulb-flash-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">La Solution MagDji Bot</h3>
+                        <p class="text-purple-100 leading-relaxed mb-4">
+                            Un assistant IA révolutionnaire qui fonctionne :
+                        </p>
+                        <ul class="space-y-3 text-purple-100">
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-green-300 mr-3 mt-1"></i>
+                                <span><strong>100% en local</strong> grâce à Ollama</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-green-300 mr-3 mt-1"></i>
+                                <span><strong>Sans coût d'API</strong> - totalement gratuit</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-green-300 mr-3 mt-1"></i>
+                                <span><strong>Hors ligne</strong> - aucune connexion requise</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-green-300 mr-3 mt-1"></i>
+                                <span><strong>Privé et sécurisé</strong> - vos données restent locales</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fonctionnalités -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                        💫 Fonctionnalités Principales
+                    </h2>
+                    <p class="text-gray-600 text-lg">
+                        Découvrez les capacités exceptionnelles de MagDji Bot
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="feature-card bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6 border-2 border-purple-200 hover:border-purple-300">
+                        <div class="w-14 h-14 bg-purple-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
+                            <i class="ri-chat-3-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Chat IA en Temps Réel</h3>
+                        <p class="text-gray-700">
+                            Conversations fluides et intelligentes avec des réponses rapides grâce au modèle LLaMA 3.2.
+                        </p>
+                    </div>
+
+                    <div class="feature-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border-2 border-blue-200 hover:border-blue-300">
+                        <div class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
+                            <i class="ri-cloud-off-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Fonctionnement Hors Ligne</h3>
+                        <p class="text-gray-700">
+                            Utilisez votre assistant IA sans connexion Internet grâce à Ollama en local.
+                        </p>
+                    </div>
+
+                    <div class="feature-card bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 border-2 border-green-200 hover:border-green-300">
+                        <div class="w-14 h-14 bg-green-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
+                            <i class="ri-settings-3-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Configuration Personnalisée</h3>
+                        <p class="text-gray-700">
+                            Configurez OLLAMA_HOST et Access Token pour adapter le bot à vos besoins.
+                        </p>
+                    </div>
+
+                    <div class="feature-card bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl p-6 border-2 border-yellow-200 hover:border-yellow-300">
+                        <div class="w-14 h-14 bg-yellow-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
+                            <i class="ri-smartphone-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Interface Intuitive</h3>
+                        <p class="text-gray-700">
+                            Application mobile Flutter avec design moderne et expérience utilisateur fluide.
+                        </p>
+                    </div>
+
+                    <div class="feature-card bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-2xl p-6 border-2 border-indigo-200 hover:border-indigo-300">
+                        <div class="w-14 h-14 bg-indigo-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
+                            <i class="ri-shield-keyhole-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Sécurité Maximale</h3>
+                        <p class="text-gray-700">
+                            Authentification par token et protection des données locales.
+                        </p>
+                    </div>
+
+                    <div class="feature-card bg-gradient-to-br from-pink-50 to-pink-100 rounded-2xl p-6 border-2 border-pink-200 hover:border-pink-300">
+                        <div class="w-14 h-14 bg-pink-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
+                            <i class="ri-open-source-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Open Source</h3>
+                        <p class="text-gray-700">
+                            Basé sur des technologies open source pour une transparence totale.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies -->
+    <section class="py-16 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">
+                    🛠️ Technologies Utilisées
+                </h2>
+                <p class="text-gray-300 text-lg">
+                    La stack technique derrière MagDji Bot
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Flutter -->
+                <div class="tech-card bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm border border-gray-700 hover:border-blue-500/50 transition-all duration-300 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <i class="ri-flutter-fill text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-white group-hover:text-blue-400 transition-colors duration-300">Flutter</h3>
+                            <p class="text-gray-400 text-sm group-hover:text-blue-300 transition-colors duration-300">Interface Mobile</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
+                        Framework cross-platform pour une expérience utilisateur native sur iOS et Android.
+                    </p>
+                    
+                    <!-- Badge de compétence -->
+                    <div class="mt-4 flex items-center">
+                        <div class="flex space-x-1">
+                            <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                            <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                            <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                        </div>
+                        <span class="text-xs text-blue-400 font-medium ml-2">operationel</span>
+                    </div>
+                </div>
+
+                <!-- Ollama -->
+                <div class="tech-card bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm border border-gray-700 hover:border-green-500/50 transition-all duration-300 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <i class="ri-cpu-line text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-white group-hover:text-green-400 transition-colors duration-300">Ollama</h3>
+                            <p class="text-gray-400 text-sm group-hover:text-green-300 transition-colors duration-300">Serveur LLM Local</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
+                        Plateforme pour exécuter des modèles de langage localement sans connexion cloud.
+                    </p>
+                    
+                    <!-- Badge de compétence -->
+                    <div class="mt-4 flex items-center">
+                        <div class="flex space-x-1">
+                            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                        </div>
+                        <span class="text-xs text-green-400 font-medium ml-2">Avancé</span>
+                    </div>
+                </div>
+
+                <!-- LLaMA 3.2 -->
+                <div class="tech-card bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm border border-gray-700 hover:border-purple-500/50 transition-all duration-300 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <i class="ri-brain-line text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-white group-hover:text-purple-400 transition-colors duration-300">LLaMA 3.2</h3>
+                            <p class="text-gray-400 text-sm group-hover:text-purple-300 transition-colors duration-300">Modèle IA</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
+                        Modèle de langage open-source de Meta, optimisé pour les performances locales.
+                    </p>
+                    
+                    <!-- Badge de compétence -->
+                    <div class="mt-4 flex items-center">
+                        <div class="flex space-x-1">
+                            <div class="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                            <div class="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                            <div class="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                        </div>
+                        <span class="text-xs text-purple-400 font-medium ml-2">Expert</span>
+                    </div>
+                </div>
+
+                <!-- Postman -->
+                <div class="tech-card bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm border border-gray-700 hover:border-orange-500/50 transition-all duration-300 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <i class="ri-send-plane-line text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-white group-hover:text-orange-400 transition-colors duration-300">Postman</h3>
+                            <p class="text-gray-400 text-sm group-hover:text-orange-300 transition-colors duration-300">API Testing & Development</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
+                        Plateforme complète pour le test, le développement et la documentation des APIs REST avec gestion des collections et environnements.
+                    </p>
+                    
+                    <!-- Badge de compétence -->
+                    <div class="mt-4 flex items-center">
+                        <div class="flex space-x-1">
+                            <div class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
+                            <div class="w-2 h-2 bg-orange-500 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                            <div class="w-2 h-2 bg-orange-500 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                        </div>
+                        <span class="text-xs text-orange-400 font-medium ml-2">Expert</span>
+                    </div>
+                </div>
+
+                
+
+                <!-- API REST -->
+                <div class="tech-card bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm border border-gray-700 hover:border-red-500/50 transition-all duration-300 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <i class="ri-rest-api-line text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-white group-hover:text-red-400 transition-colors duration-300">API REST</h3>
+                            <p class="text-gray-400 text-sm group-hover:text-red-300 transition-colors duration-300">Communication</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
+                        Interface de programmation pour les échanges entre l'application Flutter et le serveur Ollama.
+                    </p>
+                    
+                    <!-- Badge de compétence -->
+                    <div class="mt-4 flex items-center">
+                        <div class="flex space-x-1">
+                            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                        </div>
+                        <span class="text-xs text-red-400 font-medium ml-2">Expert</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Note sur les compétences -->
+            <div class="mt-12 text-center">
+                <div class="inline-flex items-center px-4 py-2 bg-gray-800/50 rounded-full text-sm text-gray-300">
+                    <i class="ri-information-line mr-2 text-blue-400"></i>
+                    Les niveaux de compétence sont basés sur l'expérience pratique et la maîtrise de chaque technologie
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Compétences Démontrées -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                        🏆 Compétences Démontrées
+                    </h2>
+                    <p class="text-gray-600 text-lg">
+                        Les expertises techniques mises en œuvre dans ce projet
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 text-center">
+                        <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                            <i class="ri-robot-2-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Intégration IA</h3>
+                        <p class="text-sm text-gray-700">
+                            Maîtrise des modèles open source et de leur intégration dans des applications mobiles
+                        </p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6 text-center">
+                        <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                            <i class="ri-smartphone-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Développement Mobile</h3>
+                        <p class="text-sm text-gray-700">
+                            Expertise Flutter avec architecture propre et bonnes pratiques
+                        </p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 text-center">
+                        <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                            <i class="ri-terminal-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Backend & API</h3>
+                        <p class="text-sm text-gray-700">
+                            Création d'API locales et communication avec des services IA
+                        </p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl p-6 text-center">
+                        <div class="w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                            <i class="ri-settings-3-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Configuration</h3>
+                        <p class="text-sm text-gray-700">
+                            Gestion des environnements et configurations complexes
+                        </p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-6 text-center">
+                        <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                            <i class="ri-shield-check-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Sécurité</h3>
+                        <p class="text-sm text-gray-700">
+                            Mise en œuvre de l'authentification et protection des données
+                        </p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-2xl p-6 text-center">
+                        <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                            <i class="ri-palette-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">UI/UX Design</h3>
+                        <p class="text-sm text-gray-700">
+                            Conception d'interfaces modernes et expériences utilisateur soignées
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Final -->
+    <section class="py-20 hero-gradient text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Prêt à Explorer l'IA Locale ?
+                </h2>
+                <p class="text-xl text-purple-100 mb-8 leading-relaxed">
+                    MagDji Bot démontre qu'il est possible de créer des applications IA performantes sans dépendre de services cloud coûteux.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center mb-8">
+                    <a href="../../../index.html#contact" class="group px-8 py-4 bg-white text-purple-600 font-semibold rounded-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center">
+                        <i class="ri-mail-line mr-2 text-xl group-hover:scale-110 transition-transform"></i>
+                        Discuter d'un Projet
+                    </a>
+                    <a href="../../../index.html#projets" class="group px-8 py-4 glass-effect text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300 flex items-center">
+                        <i class="ri-arrow-left-line mr-2 text-xl"></i>
+                        Voir Mes Autres Projets
+                    </a>
+                </div>
+                <p class="text-purple-200 text-sm">
+                    ✨ Découvrez comment intégrer l'IA dans vos applications sans compromettre la confidentialité ou le budget
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Élégant -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="flex justify-center space-x-6 mb-6">
+                    <a href="https://www.linkedin.com/in/mamadou-absa-gueye/" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300">
+                        <i class="ri-linkedin-fill"></i>
+                    </a>
+                    <a href="https://github.com/magDji08" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-gray-700 hover:text-white transition-all duration-300">
+                        <i class="ri-github-fill"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@MagDji08" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition-all duration-300">
+                        <i class="ri-youtube-fill"></i>
+                    </a>
+                    <a href="https://wa.me/221773659929" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300">
+                        <i class="ri-whatsapp-fill"></i>
+                    </a>
+                </div>
+                <p class="text-gray-400">
+                    © 2025 MAG Dev - Mamadou Absa Gueye
+                </p>
+                <p class="text-gray-500 text-sm mt-2">
+                    Développé avec ❤️ et une IA 100% locale
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation au défilement
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observer les éléments à animer
+            document.querySelectorAll('.tech-card, .feature-card').forEach((el) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

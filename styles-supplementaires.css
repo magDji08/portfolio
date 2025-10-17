@@ -1,0 +1,158 @@
+/* ===================================
+   STYLES SUPPLÉMENTAIRES PORTFOLIO
+   ================================= */
+
+/* Animations personnalisées */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Classes d'animation */
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+}
+
+/* Animation séquentielle pour les projets */
+.project-item {
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out forwards;
+}
+
+.project-item:nth-child(1) { animation-delay: 0.1s; }
+.project-item:nth-child(2) { animation-delay: 0.2s; }
+.project-item:nth-child(3) { animation-delay: 0.3s; }
+.project-item:nth-child(4) { animation-delay: 0.4s; }
+.project-item:nth-child(5) { animation-delay: 0.5s; }
+.project-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* Utilitaire line-clamp */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Hover effects pour les cartes de compétences */
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1);
+}
+
+/* Transitions pour les icônes */
+.group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+}
+
+/* Effets de zoom sur images de projets */
+.group:hover img {
+    transform: scale(1.1);
+}
+
+/* Overlay gradient pour projets */
+.project-item .overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3), transparent);
+}
+
+/* Boutons de filtre actifs */
+.filter-btn.active {
+    background-color: #3b82f6;
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+}
+
+/* Animation du bouton CTA */
+.group\/btn:hover {
+    gap: 1rem;
+}
+
+.group\/btn:hover i {
+    transform: translateX(4px);
+}
+
+/* Barres de progression personnalisées */
+.progress-bar {
+    height: 8px;
+    background-color: #e2e8f0;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    border-radius: 999px;
+    transition: width 0.5s ease;
+}
+
+/* Badges de statut */
+.badge-new {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    animation: pulse 2s infinite;
+}
+
+.badge-featured {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .project-item {
+        animation-delay: 0s !important;
+    }
+    
+    .skill-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus states pour accessibilité */
+.filter-btn:focus,
+button:focus,
+a:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Transitions globales */
+* {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}

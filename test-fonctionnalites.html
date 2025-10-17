@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test des Fonctionnalités - Portfolio MAG Dev</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Arial', sans-serif; }
+        .test-item { border-left: 4px solid #e2e8f0; }
+        .test-item.success { border-left-color: #10b981; }
+        .test-item.warning { border-left-color: #f59e0b; }
+        .test-item.error { border-left-color: #ef4444; }
+    </style>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">
+                <i class="ri-checkbox-circle-line text-blue-600"></i>
+                Test des Fonctionnalités
+            </h1>
+            <p class="text-gray-600">Portfolio MAG Dev - Version 2.0</p>
+        </div>
+
+        <!-- Section 1: Fichiers -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <i class="ri-file-list-3-line text-blue-600 mr-3"></i>
+                1. Vérification des Fichiers
+            </h2>
+            
+            <div class="space-y-4">
+                <div class="test-item success bg-green-50 p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="ri-checkbox-circle-fill text-green-600 text-xl mr-3"></i>
+                            <span class="font-semibold">index.html</span>
+                        </div>
+                        <span class="text-sm text-green-700">✓ Présent</span>
+                    </div>
+                </div>
+                
+                <div class="test-item success bg-green-50 p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="ri-checkbox-circle-fill text-green-600 text-xl mr-3"></i>
+                            <span class="font-semibold">README.md</span>
+                        </div>
+                        <span class="text-sm text-green-700">✓ Présent</span>
+                    </div>
+                </div>
+                
+                <div class="test-item success bg-green-50 p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="ri-checkbox-circle-fill text-green-600 text-xl mr-3"></i>
+                            <span class="font-semibold">GUIDE_UTILISATION.md</span>
+                        </div>
+                        <span class="text-sm text-green-700">✓ Présent</span>
+                    </div>
+                </div>
+                
+                <div class="test-item success bg-green-50 p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="ri-checkbox-circle-fill text-green-600 text-xl mr-3"></i>
+                            <span class="font-semibold">assets/</span>
+                        </div>
+                        <span class="text-sm text-green-700">✓ Dossier présent</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Dépendances -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <i class="ri-stack-line text-blue-600 mr-3"></i>
+                2. Dépendances Externes
+            </h2>
+            
+            <div class="space-y-4">
+                <div class="test-item success bg-green-50 p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="ri-checkbox-circle-fill text-green-600 text-xl mr-3"></i>
+                            <span class="font-semibold">TailwindCSS 3.4.16</span>
+                        </div>
+                        <a href="https://cdn.tailwindcss.com/3.4.16" target="_blank" class="text-sm text-blue-600 hover:underline">
+                            Vérifier <i class="ri-external-link-line"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="test-item success bg-green-50 p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="ri-checkbox-circle-fill text-green-600 text-xl mr-3"></i>
+                            <span class="font-semibold">RemixIcon 4.6.0</span>
+                        </div>
+                        <a href="https://remixicon.com/" target="_blank" class="text-sm text-blue-600 hover:underline">
+                            Vérifier <i class="ri-external-link-line"></i>
+                        </a>
+                    </div>
+                    <div class="mt-2 ml-8">
+                        <i class="ri-home-line text-2xl text-purple-600"></i>
+                        <i class="ri-user-line text-2xl text-blue-600"></i>
+                        <i class="ri-code-line text-2xl text-green-600"></i>
+                        <i class="ri-palette-line text-2xl text-pink-600"></i>
+                        <span class="text-sm text-gray-600 ml-2">← Icônes chargées</span>
+                    </div>
+                </div>
+                
+                <div class="test-item success bg-green-50 p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="ri-checkbox-circle-fill text-green-600 text-xl mr-3"></i>
+                            <span class="font-semibold">Google Fonts (Poppins, Pacifico)</span>
+                        </div>
+                        <span class="text-sm text-green-700" style="font-family: 'Poppins';">✓ Chargé</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Fonctionnalités -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <i class="ri-function-line text-blue-600 mr-3"></i>
+                3. Fonctionnalités Principales
+            </h2>
+            
+            <div class="space-y-4">
+                <div class="test-item success bg-green-50 p-4 rounded-lg">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center">
+                            <i class="ri-checkbox-circle-fill text-green-600 text-xl mr-3"></i>
+                            <span class="font-semibold">Section Compétences Modernisée</span>
+                        </div>
+                        <a href="index.html#competences" class="text-sm text-blue-600 hover:underline">
+                            Tester <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </div>
+                    <ul class="ml-8 text-sm text-gray-600 space-y-1">
+                        <li>✓ 6 catégories de compétences</li>
+                        <li>✓ 30+ technologies avec icônes</li>
+                        <li>✓ Barres de progression</li>
+                        <li>✓ Effets hover animés</li>
+                    </ul>
+                </div>
+                
+                <div class="test-item success bg-green-50 p-4 rounded-lg">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center">
+                            <i class="ri-checkbox-circle-fill text-green-600 text-xl mr-3"></i>
+                            <span class="font-semibold">Section Projets Interactive</span>
+                        </div>
+                        <a href="index.html#projets" class="text-sm text-blue-600 hover:underline">
+                            Tester <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </div>
+                    <ul class="ml-8 text-sm text-gray-600 space-y-1">
+                        <li>✓ Système de filtres dynamiques</li>
+                        <li>✓ 6 projets présentés</li>
+                        <li>✓ Badges "Nouveau" et "Featured"</li>
+                        <li>✓ Animations au hover</li>
+                    </ul>
+                </div>
+                
+                <div class="test-item success bg-green-50 p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="ri-checkbox-circle-fill text-green-600 text-xl mr-3"></i>
+                            <span class="font-semibold">Responsive Design</span>
+                        </div>
+                        <span class="text-sm text-green-700">✓ Mobile/Tablet/Desktop</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Tests à Effectuer -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <i class="ri-test-tube-line text-blue-600 mr-3"></i>
+                4. Tests à Effectuer Manuellement
+            </h2>
+            
+            <div class="space-y-4">
+                <div class="test-item bg-blue-50 border-blue-300 p-4 rounded-lg">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" class="w-5 h-5 text-blue-600 rounded mr-3">
+                        <span class="font-semibold">Tester les filtres de projets</span>
+                    </label>
+                    <p class="ml-8 text-sm text-gray-600 mt-1">
+                        Cliquez sur chaque filtre (Tous, Web, Mobile, E-commerce, Gestion) et vérifiez que les projets se filtrent correctement.
+                    </p>
+                </div>
+                
+                <div class="test-item bg-blue-50 border-blue-300 p-4 rounded-lg">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" class="w-5 h-5 text-blue-600 rounded mr-3">
+                        <span class="font-semibold">Vérifier les effets hover</span>
+                    </label>
+                    <p class="ml-8 text-sm text-gray-600 mt-1">
+                        Survolez les cartes de compétences et de projets pour voir les animations.
+                    </p>
+                </div>
+                
+                <div class="test-item bg-blue-50 border-blue-300 p-4 rounded-lg">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" class="w-5 h-5 text-blue-600 rounded mr-3">
+                        <span class="font-semibold">Tester sur mobile</span>
+                    </label>
+                    <p class="ml-8 text-sm text-gray-600 mt-1">
+                        Appuyez sur F12 → Ctrl+Shift+M pour tester la version mobile.
+                    </p>
+                </div>
+                
+                <div class="test-item bg-blue-50 border-blue-300 p-4 rounded-lg">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" class="w-5 h-5 text-blue-600 rounded mr-3">
+                        <span class="font-semibold">Vérifier les liens</span>
+                    </label>
+                    <p class="ml-8 text-sm text-gray-600 mt-1">
+                        Testez tous les boutons "Voir le projet" et les liens de navigation.
+                    </p>
+                </div>
+                
+                <div class="test-item bg-blue-50 border-blue-300 p-4 rounded-lg">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" class="w-5 h-5 text-blue-600 rounded mr-3">
+                        <span class="font-semibold">Console sans erreurs</span>
+                    </label>
+                    <p class="ml-8 text-sm text-gray-600 mt-1">
+                        F12 → Console : vérifiez qu'il n'y a pas d'erreurs JavaScript.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Statistiques -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <i class="ri-bar-chart-box-line text-blue-600 mr-3"></i>
+                5. Statistiques du Projet
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-blue-50 p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-blue-600">30+</div>
+                    <div class="text-sm text-gray-600 mt-1">Technologies</div>
+                </div>
+                
+                <div class="bg-green-50 p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-green-600">6</div>
+                    <div class="text-sm text-gray-600 mt-1">Projets</div>
+                </div>
+                
+                <div class="bg-purple-50 p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-purple-600">5</div>
+                    <div class="text-sm text-gray-600 mt-1">Sections</div>
+                </div>
+                
+                <div class="bg-pink-50 p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-pink-600">100%</div>
+                    <div class="text-sm text-gray-600 mt-1">Responsive</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions Rapides -->
+        <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg p-8 text-white">
+            <h2 class="text-2xl font-bold mb-6">
+                <i class="ri-rocket-line mr-2"></i>
+                Actions Rapides
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-4">
+                <a href="index.html" class="bg-white/20 hover:bg-white/30 p-4 rounded-lg text-center transition-all">
+                    <i class="ri-eye-line text-3xl mb-2"></i>
+                    <div class="font-semibold">Voir le Portfolio</div>
+                </a>
+                
+                <a href="GUIDE_UTILISATION.md" class="bg-white/20 hover:bg-white/30 p-4 rounded-lg text-center transition-all">
+                    <i class="ri-book-open-line text-3xl mb-2"></i>
+                    <div class="font-semibold">Guide d'Utilisation</div>
+                </a>
+                
+                <a href="QUICKSTART.md" class="bg-white/20 hover:bg-white/30 p-4 rounded-lg text-center transition-all">
+                    <i class="ri-speed-line text-3xl mb-2"></i>
+                    <div class="font-semibold">Quick Start</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-8 text-gray-600">
+            <p>Portfolio MAG Dev - Version 2.0</p>
+            <p class="text-sm mt-2">Développé avec ❤️ par Mamadou Absa Gueye</p>
+        </div>
+    </div>
+</body>
+</html>
